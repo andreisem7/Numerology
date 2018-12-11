@@ -127,7 +127,7 @@ namespace Numerology.BL
             vowelsOfSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.SurnameLetters.Where(v => !v.IsConsonant).ToList())));
             consonantsOfSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.SurnameLetters.Where(v => v.IsConsonant).ToList())));
             vowelsAndConsonantsOfSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.SurnameLetters)));
-                        
+
             if (!string.IsNullOrEmpty(fathersname))
             {
                 vowelsOfFathername = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.FathersnameLetters.Where(v => !v.IsConsonant).ToList())));
@@ -147,7 +147,7 @@ namespace Numerology.BL
                 vowelsAndConsonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(nameSurname.NameLetters, nameSurname.SurnameLetters))));
 
                 vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumber = int.Parse(NarrowToOneNumber(vowelsAndConsonantsOfNameAndSurname.ToString() + _lifeWayNumber.ToString()));
-            }            
+            }
 
             InitMatrix();
         }
@@ -222,8 +222,6 @@ namespace Numerology.BL
         private NameSurnameObject InitNumerogicalLetterAlphabet(Language lang, string name, string surname, string fathername)
         {
             var alphabet = GetAlphabet(lang);
-            //if (string.IsNullOrEmpty(name)) return null;
-            //if (string.IsNullOrEmpty(surname)) return null;
 
             NameSurnameObject result = new NameSurnameObject();
 
@@ -267,14 +265,14 @@ namespace Numerology.BL
             }
             // Fathername
             if (!string.IsNullOrEmpty(fathername))
-            {                
+            {
                 char[] splittedFathersname = fathername.Where(c => Char.IsLetter(c)).ToArray();
                 for (int i = 0; i < splittedFathersname.Length; i++)
                 {
                     var letterOfFathername = splittedFathersname[i].ToString().ToUpperInvariant();
                     var numerogicalLetter = alphabet.FirstOrDefault(let => let.Letter.Equals(letterOfFathername));
 
-                    if (numerogicalLetter == null) continue;                    
+                    if (numerogicalLetter == null) continue;
                     result.FathersnameLetters.Add(numerogicalLetter);
                 }
             }
@@ -288,6 +286,7 @@ namespace Numerology.BL
                 case Language.ENG: { return AlphabetCrapHelper.GetEnglishAlphabet(); }
                 case Language.EST: { return AlphabetCrapHelper.GetEstonianAlphabet(); }
                 case Language.RUS: { return AlphabetCrapHelper.GetRussianAlphabet(); }
+                case Language.LAT: { return AlphabetCrapHelper.GetLatvianAlphabet(); }
                 default: { return AlphabetCrapHelper.GetEnglishAlphabet(); }
             }
         }
@@ -296,6 +295,7 @@ namespace Numerology.BL
     {
         ENG = 1,
         RUS = 2,
-        EST = 3
+        EST = 3,
+        LAT = 4
     }
 }

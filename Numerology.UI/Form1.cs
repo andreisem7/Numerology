@@ -167,11 +167,23 @@ namespace Numerology.UI
 
         private void btnNameShow_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txbName.Text) || string.IsNullOrEmpty(txbSurname.Text))
+            if (cmbLang.SelectedItem != null && ((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()) == Language.RUS))
             {
-                MessageBox.Show("Не введено имя или фамилия.");
-                return;
+                if (string.IsNullOrEmpty(txbName.Text) || string.IsNullOrEmpty(txbSurname.Text) || string.IsNullOrEmpty(txbFathersName.Text))
+                {
+                    MessageBox.Show("Не введено имя, фамилия или отчество.");
+                    return;
+                }
             }
+            else
+            {
+                if (string.IsNullOrEmpty(txbName.Text) || string.IsNullOrEmpty(txbSurname.Text))
+                {
+                    MessageBox.Show("Не введено имя или фамилия.");
+                    return;
+                }
+            }            
+            
             var day = GetCmbSelectedValue(cmbDate);
             var month = GetCmbSelectedValue(cmbMonth);
             var year = GetCmbSelectedValue(cmbYear);
@@ -191,6 +203,7 @@ namespace Numerology.UI
 
             var selectedLang = (Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString());
             HandleLanguagesDifference(selectedLang == Language.RUS);
+            if (selectedLang != Language.RUS) { txbFathersName.Text = ""; }
 
             if (string.IsNullOrEmpty(txbName.Text) || string.IsNullOrEmpty(txbSurname.Text) || (selectedLang == Language.RUS && string.IsNullOrEmpty(txbFathersName.Text))) return;
 

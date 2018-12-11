@@ -112,6 +112,7 @@ namespace Numerology.UI
         {
             txbName1.Text = comparison.Name;
             txbSurname1.Text = comparison.Surname;
+            txbFathername1.Text = comparison.Fathername;
             txbDOB1.Text = comparison.DOB.ToString("dd.MM.yyyy");
 
             lblWayOfLifeValue1.Text = comparison.LifeWayNumber.ToString();
@@ -127,6 +128,7 @@ namespace Numerology.UI
         {
             txbName2.Text = comparison.Name;
             txbSurname2.Text = comparison.Surname;
+            txbFathername2.Text = comparison.Fathername;
             txbDOB2.Text = comparison.DOB.ToString("dd.MM.yyyy");
 
             lblWayOfLifeValue2.Text = comparison.LifeWayNumber.ToString();

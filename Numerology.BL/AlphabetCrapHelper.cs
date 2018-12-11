@@ -214,5 +214,81 @@ namespace Numerology.BL
 
             return alphabet;
         }
+
+        public static List<NumerogicalLetter> GetLatvianAlphabet()
+        {
+            var alphabet = new List<NumerogicalLetter>();
+            NumerogicalLetter a = new NumerogicalLetter() { Letter = "A", IsConsonant = false, Index = 1 };
+            alphabet.Add(a);
+            NumerogicalLetter aa = new NumerogicalLetter() { Letter = "Ā", IsConsonant = false, Index = 2 };
+            alphabet.Add(aa);
+            NumerogicalLetter b = new NumerogicalLetter() { Letter = "B", IsConsonant = true, Index = 3 };
+            alphabet.Add(b);
+            NumerogicalLetter c = new NumerogicalLetter() { Letter = "C", IsConsonant = true, Index = 4 };
+            alphabet.Add(c);
+            NumerogicalLetter cc = new NumerogicalLetter() { Letter = "Č", IsConsonant = true, Index = 5 };
+            alphabet.Add(cc);
+            NumerogicalLetter d = new NumerogicalLetter() { Letter = "D", IsConsonant = true, Index = 6 };
+            alphabet.Add(d);
+            NumerogicalLetter e = new NumerogicalLetter() { Letter = "E", IsConsonant = false, Index = 7 };
+            alphabet.Add(e);
+            NumerogicalLetter ee = new NumerogicalLetter() { Letter = "Ē", IsConsonant = false, Index = 8 };
+            alphabet.Add(ee);
+            NumerogicalLetter f = new NumerogicalLetter() { Letter = "F", IsConsonant = true, Index = 9 };
+            alphabet.Add(f);
+
+            NumerogicalLetter g = new NumerogicalLetter() { Letter = "G", IsConsonant = true, Index = 1 };
+            alphabet.Add(g);
+            NumerogicalLetter gg = new NumerogicalLetter() { Letter = "Ģ", IsConsonant = true, Index = 2 };
+            alphabet.Add(gg);
+            NumerogicalLetter h = new NumerogicalLetter() { Letter = "H", IsConsonant = true, Index = 3 };
+            alphabet.Add(h);
+            NumerogicalLetter i = new NumerogicalLetter() { Letter = "I", IsConsonant = false, Index = 4 };
+            alphabet.Add(i);
+            NumerogicalLetter ii = new NumerogicalLetter() { Letter = "Ī", IsConsonant = false, Index = 5 };
+            alphabet.Add(ii);
+            NumerogicalLetter j = new NumerogicalLetter() { Letter = "J", IsConsonant = true, Index = 6 };
+            alphabet.Add(j);
+            NumerogicalLetter k = new NumerogicalLetter() { Letter = "K", IsConsonant = true, Index = 7 };
+            alphabet.Add(k);
+            NumerogicalLetter kk = new NumerogicalLetter() { Letter = "Ķ", IsConsonant = true, Index = 8 };
+            alphabet.Add(kk);
+            NumerogicalLetter l = new NumerogicalLetter() { Letter = "L", IsConsonant = true, Index = 9 };
+            alphabet.Add(l);
+
+            NumerogicalLetter ll = new NumerogicalLetter() { Letter = "Ļ", IsConsonant = true, Index = 1 };
+            alphabet.Add(ll);
+            NumerogicalLetter m = new NumerogicalLetter() { Letter = "M", IsConsonant = true, Index = 2 };
+            alphabet.Add(m);
+            NumerogicalLetter n = new NumerogicalLetter() { Letter = "N", IsConsonant = true, Index = 3 };
+            alphabet.Add(n);
+            NumerogicalLetter nn = new NumerogicalLetter() { Letter = "Ņ", IsConsonant = true, Index = 4 };
+            alphabet.Add(nn);
+            NumerogicalLetter o = new NumerogicalLetter() { Letter = "O", IsConsonant = false, Index = 5 };
+            alphabet.Add(o);
+            NumerogicalLetter p = new NumerogicalLetter() { Letter = "P", IsConsonant = true, Index = 6 };
+            alphabet.Add(p);
+            NumerogicalLetter r = new NumerogicalLetter() { Letter = "R", IsConsonant = true, Index = 7 };
+            alphabet.Add(r);
+            NumerogicalLetter s = new NumerogicalLetter() { Letter = "S", IsConsonant = true, Index = 8 };
+            alphabet.Add(s);
+            NumerogicalLetter ss = new NumerogicalLetter() { Letter = "Š", IsConsonant = true, Index = 9 };
+            alphabet.Add(ss);
+
+            NumerogicalLetter t = new NumerogicalLetter() { Letter = "T", IsConsonant = true, Index = 1 };
+            alphabet.Add(t);
+            NumerogicalLetter u = new NumerogicalLetter() { Letter = "U", IsConsonant = false, Index = 2 };
+            alphabet.Add(u);
+            NumerogicalLetter uu = new NumerogicalLetter() { Letter = "Ū", IsConsonant = false, Index = 3 };
+            alphabet.Add(uu);
+            NumerogicalLetter v = new NumerogicalLetter() { Letter = "V", IsConsonant = true, Index = 4 };
+            alphabet.Add(v);
+            NumerogicalLetter z = new NumerogicalLetter() { Letter = "Z", IsConsonant = true, Index = 5 };
+            alphabet.Add(z);
+            NumerogicalLetter zz = new NumerogicalLetter() { Letter = "Ž", IsConsonant = true, Index = 6 };
+            alphabet.Add(zz);
+
+            return alphabet;
+        }
     }
 }
