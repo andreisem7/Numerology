@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChartForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.grbSelectedPerson = new System.Windows.Forms.GroupBox();
+            this.txbDescription = new System.Windows.Forms.TextBox();
             this.chrPeaks = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txbFile = new System.Windows.Forms.TextBox();
             this.btnSelectPerson = new System.Windows.Forms.Button();
             this.lblFileName = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.grbSelectedPerson.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrPeaks)).BeginInit();
             this.SuspendLayout();
             // 
             // grbSelectedPerson
             // 
-            this.grbSelectedPerson.Controls.Add(this.textBox1);
+            this.grbSelectedPerson.Controls.Add(this.txbDescription);
             this.grbSelectedPerson.Controls.Add(this.chrPeaks);
             this.grbSelectedPerson.Controls.Add(this.txbFile);
             this.grbSelectedPerson.Controls.Add(this.btnSelectPerson);
@@ -58,42 +58,52 @@
             this.grbSelectedPerson.TabStop = false;
             this.grbSelectedPerson.Text = "Выбранный объект";
             // 
+            // txbDescription
+            // 
+            this.txbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbDescription.Location = new System.Drawing.Point(26, 438);
+            this.txbDescription.Multiline = true;
+            this.txbDescription.Name = "txbDescription";
+            this.txbDescription.Size = new System.Drawing.Size(742, 273);
+            this.txbDescription.TabIndex = 4;
+            this.txbDescription.Text = resources.GetString("txbDescription.Text");
+            // 
             // chrPeaks
             // 
             this.chrPeaks.BorderlineWidth = 5;
-            chartArea2.AxisX.Interval = 5D;
-            chartArea2.AxisX.IntervalOffset = 5D;
-            chartArea2.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea2.AxisX.Maximum = 100D;
-            chartArea2.AxisX.Minimum = 0D;
-            chartArea2.AxisY.Interval = 1D;
-            chartArea2.AxisY.Maximum = 9D;
-            chartArea2.AxisY.Minimum = 0D;
-            chartArea2.Name = "ChartArea1";
-            this.chrPeaks.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chrPeaks.Legends.Add(legend2);
+            chartArea1.AxisX.Interval = 5D;
+            chartArea1.AxisX.IntervalOffset = 5D;
+            chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisX.Maximum = 100D;
+            chartArea1.AxisX.Minimum = 0D;
+            chartArea1.AxisY.Interval = 1D;
+            chartArea1.AxisY.Maximum = 9D;
+            chartArea1.AxisY.Minimum = 0D;
+            chartArea1.Name = "ChartArea1";
+            this.chrPeaks.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chrPeaks.Legends.Add(legend1);
             this.chrPeaks.Location = new System.Drawing.Point(22, 76);
             this.chrPeaks.Name = "chrPeaks";
             this.chrPeaks.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series2.BorderWidth = 3;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.CustomProperties = "IsXAxisQuantitative=True";
-            series2.IsVisibleInLegend = false;
-            series2.Legend = "Legend1";
-            series2.Name = "Peaks";
-            series2.XValueMember = "X";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            series2.YValueMembers = "Y";
-            series2.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            this.chrPeaks.Series.Add(series2);
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.CustomProperties = "IsXAxisQuantitative=True";
+            series1.IsVisibleInLegend = false;
+            series1.Legend = "Legend1";
+            series1.Name = "Peaks";
+            series1.XValueMember = "X";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            series1.YValueMembers = "Y";
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            this.chrPeaks.Series.Add(series1);
             this.chrPeaks.Size = new System.Drawing.Size(747, 343);
             this.chrPeaks.TabIndex = 3;
             this.chrPeaks.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "График 5-ти летних циклов";
-            this.chrPeaks.Titles.Add(title2);
+            title1.Name = "Title1";
+            title1.Text = "График 5-ти летних циклов";
+            this.chrPeaks.Titles.Add(title1);
             // 
             // txbFile
             // 
@@ -127,16 +137,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(26, 438);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(742, 273);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
-            // 
             // ChartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,6 +163,6 @@
         private System.Windows.Forms.TextBox txbFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chrPeaks;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbDescription;
     }
 }
