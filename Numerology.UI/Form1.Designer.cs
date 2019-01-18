@@ -103,6 +103,8 @@
             this.pnlPeak_1 = new System.Windows.Forms.Panel();
             this.lblMinusPeak1 = new System.Windows.Forms.Label();
             this.grbName = new System.Windows.Forms.GroupBox();
+            this.txbFathersName = new System.Windows.Forms.TextBox();
+            this.lblFathersName = new System.Windows.Forms.Label();
             this.pnlNameBase = new System.Windows.Forms.Panel();
             this.pnlNameMatrix_9 = new System.Windows.Forms.Panel();
             this.lblNameMatrix_9 = new System.Windows.Forms.Label();
@@ -157,8 +159,6 @@
             this.compareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chart5yearsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.lblFathersName = new System.Windows.Forms.Label();
-            this.txbFathersName = new System.Windows.Forms.TextBox();
             this.gbxDOB.SuspendLayout();
             this.pnlDOBMatrixBackground.SuspendLayout();
             this.pnlDOBMatrix_9.SuspendLayout();
@@ -591,9 +591,9 @@
             this.lblLifeWay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLifeWay.Location = new System.Drawing.Point(302, 43);
             this.lblLifeWay.Name = "lblLifeWay";
-            this.lblLifeWay.Size = new System.Drawing.Size(26, 17);
+            this.lblLifeWay.Size = new System.Drawing.Size(71, 17);
             this.lblLifeWay.TabIndex = 7;
-            this.lblLifeWay.Text = "00";
+            this.lblLifeWay.Text = "0000000";
             // 
             // grbValues
             // 
@@ -983,6 +983,22 @@
             this.grbName.TabIndex = 4;
             this.grbName.TabStop = false;
             this.grbName.Text = "Имя";
+            // 
+            // txbFathersName
+            // 
+            this.txbFathersName.Location = new System.Drawing.Point(139, 83);
+            this.txbFathersName.Name = "txbFathersName";
+            this.txbFathersName.Size = new System.Drawing.Size(260, 20);
+            this.txbFathersName.TabIndex = 9;
+            // 
+            // lblFathersName
+            // 
+            this.lblFathersName.AutoSize = true;
+            this.lblFathersName.Location = new System.Drawing.Point(84, 86);
+            this.lblFathersName.Name = "lblFathersName";
+            this.lblFathersName.Size = new System.Drawing.Size(54, 13);
+            this.lblFathersName.TabIndex = 8;
+            this.lblFathersName.Text = "Отчество";
             // 
             // pnlNameBase
             // 
@@ -1504,22 +1520,6 @@
             this.openFileDialog1.DefaultExt = "xml";
             this.openFileDialog1.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
             this.openFileDialog1.Title = "Browse personal data";
-            // 
-            // lblFathersName
-            // 
-            this.lblFathersName.AutoSize = true;
-            this.lblFathersName.Location = new System.Drawing.Point(84, 86);
-            this.lblFathersName.Name = "lblFathersName";
-            this.lblFathersName.Size = new System.Drawing.Size(54, 13);
-            this.lblFathersName.TabIndex = 8;
-            this.lblFathersName.Text = "Отчество";
-            // 
-            // txbFathersName
-            // 
-            this.txbFathersName.Location = new System.Drawing.Point(139, 83);
-            this.txbFathersName.Name = "txbFathersName";
-            this.txbFathersName.Size = new System.Drawing.Size(260, 20);
-            this.txbFathersName.TabIndex = 9;
             // 
             // frmNumerology
             // 
