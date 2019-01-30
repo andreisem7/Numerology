@@ -1277,9 +1277,10 @@
             this.lblPowerNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPowerNumberValue.Location = new System.Drawing.Point(125, 168);
             this.lblPowerNumberValue.Name = "lblPowerNumberValue";
-            this.lblPowerNumberValue.Size = new System.Drawing.Size(30, 31);
+            this.lblPowerNumberValue.Size = new System.Drawing.Size(78, 31);
             this.lblPowerNumberValue.TabIndex = 15;
-            this.lblPowerNumberValue.Text = "0";
+            this.lblPowerNumberValue.Text = "0000";
+            this.lblPowerNumberValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblPowerNumber
             // 
@@ -1297,9 +1298,10 @@
             this.lblDestinyNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDestinyNumberValue.Location = new System.Drawing.Point(125, 140);
             this.lblDestinyNumberValue.Name = "lblDestinyNumberValue";
-            this.lblDestinyNumberValue.Size = new System.Drawing.Size(30, 31);
+            this.lblDestinyNumberValue.Size = new System.Drawing.Size(78, 31);
             this.lblDestinyNumberValue.TabIndex = 13;
-            this.lblDestinyNumberValue.Text = "0";
+            this.lblDestinyNumberValue.Text = "0000";
+            this.lblDestinyNumberValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblDestinyNumber
             // 
@@ -1317,9 +1319,10 @@
             this.lblPersonalityNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPersonalityNumberValue.Location = new System.Drawing.Point(125, 110);
             this.lblPersonalityNumberValue.Name = "lblPersonalityNumberValue";
-            this.lblPersonalityNumberValue.Size = new System.Drawing.Size(30, 31);
+            this.lblPersonalityNumberValue.Size = new System.Drawing.Size(78, 31);
             this.lblPersonalityNumberValue.TabIndex = 11;
-            this.lblPersonalityNumberValue.Text = "0";
+            this.lblPersonalityNumberValue.Text = "0000";
+            this.lblPersonalityNumberValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblPersonalityNumber
             // 
@@ -1337,9 +1340,10 @@
             this.lblSoulNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSoulNumberValue.Location = new System.Drawing.Point(125, 79);
             this.lblSoulNumberValue.Name = "lblSoulNumberValue";
-            this.lblSoulNumberValue.Size = new System.Drawing.Size(30, 31);
+            this.lblSoulNumberValue.Size = new System.Drawing.Size(78, 31);
             this.lblSoulNumberValue.TabIndex = 9;
-            this.lblSoulNumberValue.Text = "0";
+            this.lblSoulNumberValue.Text = "0000";
+            this.lblSoulNumberValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblSoulNumber
             // 
@@ -1357,9 +1361,10 @@
             this.lblLifeWayNumberValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLifeWayNumberValue.Location = new System.Drawing.Point(125, 52);
             this.lblLifeWayNumberValue.Name = "lblLifeWayNumberValue";
-            this.lblLifeWayNumberValue.Size = new System.Drawing.Size(30, 31);
+            this.lblLifeWayNumberValue.Size = new System.Drawing.Size(78, 31);
             this.lblLifeWayNumberValue.TabIndex = 7;
-            this.lblLifeWayNumberValue.Text = "0";
+            this.lblLifeWayNumberValue.Text = "0000";
+            this.lblLifeWayNumberValue.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblLifeWayNumber
             // 

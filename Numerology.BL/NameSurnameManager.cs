@@ -24,10 +24,22 @@ namespace Numerology.BL
         private int vowelsAndConsonantsOfFathername = 0;// гласные и согласные отчества
 
         private int vowelsOfNameAndSurname = 0;// гласные имени и фамилии p.7
-        private int consonantsOfNameAndSurname = 0;// согласные имени и фамилии p.8
+        private bool isVowelsOfNameAndSurnameMaster = false;
+        private int vowelsOfNameAndSurnameMaster = 0;
+
+        private int consonantsOfNameAndSurname = 0;// согласные имени и фамилии p.8        
+        private bool isConsonantsOfNameAndSurnameMaster = false;
+        private int consonantsOfNameAndSurnameMaster = 0;
+
         private int vowelsAndConsonantsOfNameAndSurname = 0;// гласные и согласные имени и фамилии p.9
+        private bool isVowelsAndConsonantsOfNameAndSurnameMaster = false;
+        private int vowelsAndConsonantsOfNameAndSurnameMaster = 0;
+
         private int _lifeWayNumber = 0;// p.10
+
         private int vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumber = 0;// p.11
+        private bool isVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster = false;
+        private int vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster = 0;
 
         private NameSurnameObject nameSurname = null;
         /// <summary>
@@ -86,26 +98,64 @@ namespace Numerology.BL
         {
             get { return vowelsAndConsonantsOfFathername.ToString(); }
         }
+
         public string GetVowelsOfNameAndSurnameString //p.7
         {
             get { return vowelsOfNameAndSurname.ToString(); }
         }
+        public bool IsVowelsOfNameAndSurnameMaster //p.7
+        {
+            get { return isVowelsOfNameAndSurnameMaster; }
+        }
+        public string GetVowelsOfNameAndSurnameMasterString //p.7
+        {
+            get { return vowelsOfNameAndSurnameMaster.ToString(); }
+        }
+
         public string GetConsonantsOfNameAndSurnameString //p.8
         {
             get { return consonantsOfNameAndSurname.ToString(); }
         }
+        public bool IsConsonantsOfNameAndSurnameMaster //p.8
+        {
+            get { return isConsonantsOfNameAndSurnameMaster; }
+        }
+        public string GetConsonantsOfNameAndSurnameMasterString //p.8
+        {
+            get { return consonantsOfNameAndSurnameMaster.ToString(); }
+        }
+
         public string GetVowelsAndConsonantsOfNameAndSurnameString //p.9
         {
             get { return vowelsAndConsonantsOfNameAndSurname.ToString(); }
         }
+        public bool IsVowelsAndConsonantsOfNameAndSurnameMaster //p.9
+        {
+            get { return isVowelsAndConsonantsOfNameAndSurnameMaster; }
+        }
+        public string GetVowelsAndConsonantsOfNameAndSurnameMaster //p.9
+        {
+            get { return vowelsAndConsonantsOfNameAndSurnameMaster.ToString(); }
+        }
+
         public string GetLifeWayNumberString //p.10
         {
             get { return _lifeWayNumber.ToString(); }
         }
+
         public string GetVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberString //p.11
         {
             get { return vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumber.ToString(); }
         }
+        public bool IsVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster //p.11
+        {
+            get { return isVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster; }
+        }
+        public string GetVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMasterString //p.11
+        {
+            get { return vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster.ToString(); }
+        }
+
         public Matrix NameMatrix { get; set; }
 
         public void SetName(Language lang, string name, string surname, string fathersname, int lifeWayNumber)
@@ -120,33 +170,33 @@ namespace Numerology.BL
 
             nameSurname = InitNumerogicalLetterAlphabet(lang, name, surname, fathersname);
 
-            vowelsOfName = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.NameLetters.Where(v => !v.IsConsonant).ToList())));
-            consonantsOfName = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.NameLetters.Where(v => v.IsConsonant).ToList())));
-            vowelsAndConsonantsOfName = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.NameLetters)));
+            vowelsOfName = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.NameLetters.Where(v => !v.IsConsonant).ToList()), out _, out _));
+            consonantsOfName = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.NameLetters.Where(v => v.IsConsonant).ToList()), out _, out _));
+            vowelsAndConsonantsOfName = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.NameLetters), out _, out _));
 
-            vowelsOfSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.SurnameLetters.Where(v => !v.IsConsonant).ToList())));
-            consonantsOfSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.SurnameLetters.Where(v => v.IsConsonant).ToList())));
-            vowelsAndConsonantsOfSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.SurnameLetters)));
+            vowelsOfSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.SurnameLetters.Where(v => !v.IsConsonant).ToList()), out _, out _));
+            consonantsOfSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.SurnameLetters.Where(v => v.IsConsonant).ToList()), out _, out _));
+            vowelsAndConsonantsOfSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.SurnameLetters), out _, out _));
 
             if (!string.IsNullOrEmpty(fathersname))
             {
-                vowelsOfFathername = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.FathersnameLetters.Where(v => !v.IsConsonant).ToList())));
-                consonantsOfFathername = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.FathersnameLetters.Where(v => v.IsConsonant).ToList())));
-                vowelsAndConsonantsOfFathername = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.FathersnameLetters)));
+                vowelsOfFathername = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.FathersnameLetters.Where(v => !v.IsConsonant).ToList()), out _, out _));
+                consonantsOfFathername = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.FathersnameLetters.Where(v => v.IsConsonant).ToList()), out _, out _));
+                vowelsAndConsonantsOfFathername = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(nameSurname.FathersnameLetters), out _, out _));
 
-                vowelsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(Combine2Ranges(nameSurname.NameLetters.Where(v => !v.IsConsonant).ToList(), nameSurname.SurnameLetters.Where(v => !v.IsConsonant).ToList()), nameSurname.FathersnameLetters.Where(v => !v.IsConsonant).ToList()))));
-                consonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(Combine2Ranges(nameSurname.NameLetters.Where(v => v.IsConsonant).ToList(), nameSurname.SurnameLetters.Where(v => v.IsConsonant).ToList()), nameSurname.FathersnameLetters.Where(v => v.IsConsonant).ToList()))));
-                vowelsAndConsonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(Combine2Ranges(nameSurname.NameLetters, nameSurname.SurnameLetters), nameSurname.FathersnameLetters))));
+                vowelsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(Combine2Ranges(nameSurname.NameLetters.Where(v => !v.IsConsonant).ToList(), nameSurname.SurnameLetters.Where(v => !v.IsConsonant).ToList()), nameSurname.FathersnameLetters.Where(v => !v.IsConsonant).ToList())), out isVowelsOfNameAndSurnameMaster, out vowelsOfNameAndSurnameMaster));
+                consonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(Combine2Ranges(nameSurname.NameLetters.Where(v => v.IsConsonant).ToList(), nameSurname.SurnameLetters.Where(v => v.IsConsonant).ToList()), nameSurname.FathersnameLetters.Where(v => v.IsConsonant).ToList())), out isConsonantsOfNameAndSurnameMaster, out consonantsOfNameAndSurnameMaster));
+                vowelsAndConsonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(Combine2Ranges(nameSurname.NameLetters, nameSurname.SurnameLetters), nameSurname.FathersnameLetters)), out isVowelsAndConsonantsOfNameAndSurnameMaster, out vowelsAndConsonantsOfNameAndSurnameMaster));
 
-                vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumber = int.Parse(NarrowToOneNumber(vowelsAndConsonantsOfNameAndSurname.ToString() + _lifeWayNumber.ToString()));
+                vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumber = int.Parse(NarrowToOneNumber(vowelsAndConsonantsOfNameAndSurname.ToString() + _lifeWayNumber.ToString(), out isVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster, out vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster));
             }
             else
             {
-                vowelsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(nameSurname.NameLetters.Where(v => !v.IsConsonant).ToList(), nameSurname.SurnameLetters.Where(v => !v.IsConsonant).ToList()))));
-                consonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(nameSurname.NameLetters.Where(v => v.IsConsonant).ToList(), nameSurname.SurnameLetters.Where(v => v.IsConsonant).ToList()))));
-                vowelsAndConsonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(nameSurname.NameLetters, nameSurname.SurnameLetters))));
+                vowelsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(nameSurname.NameLetters.Where(v => !v.IsConsonant).ToList(), nameSurname.SurnameLetters.Where(v => !v.IsConsonant).ToList())), out isVowelsOfNameAndSurnameMaster, out vowelsOfNameAndSurnameMaster));
+                consonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(nameSurname.NameLetters.Where(v => v.IsConsonant).ToList(), nameSurname.SurnameLetters.Where(v => v.IsConsonant).ToList())), out isConsonantsOfNameAndSurnameMaster, out consonantsOfNameAndSurnameMaster));
+                vowelsAndConsonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(nameSurname.NameLetters, nameSurname.SurnameLetters)), out isVowelsAndConsonantsOfNameAndSurnameMaster, out vowelsAndConsonantsOfNameAndSurnameMaster));
 
-                vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumber = int.Parse(NarrowToOneNumber(vowelsAndConsonantsOfNameAndSurname.ToString() + _lifeWayNumber.ToString()));
+                vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumber = int.Parse(NarrowToOneNumber(vowelsAndConsonantsOfNameAndSurname.ToString() + _lifeWayNumber.ToString(), out isVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster, out vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster));
             }
 
             InitMatrix();
@@ -196,18 +246,32 @@ namespace Numerology.BL
             }
             return output;
         }
-        private string NarrowToOneNumber(string input)
+
+        private string NarrowToOneNumber(string input, out bool isMaster, out int masterNumber)
         {
-            if (string.IsNullOrEmpty(input)) return "0";//?
             string result = input;
+            isMaster = false;
+            masterNumber = 0;
+
+            var isMasterLocal = false;
+            var masterNumberLocal = 0;
             while (result.Length > 1)
             {
-                result = SimplifyString(result);
+                result = SimplifyString(result, out isMasterLocal, out masterNumberLocal);
+
+                if (!isMaster)
+                {
+                    isMaster = isMasterLocal;
+                    masterNumber = masterNumberLocal;
+                }
             }
             return result;
         }
-        private string SimplifyString(string input)
+
+        private string SimplifyString(string input, out bool isMaster, out int masterNumber)
         {
+            isMaster = false;
+            masterNumber = 0;
             if (input.Length == 1) return input;
 
             int result = 0;
@@ -215,6 +279,11 @@ namespace Numerology.BL
             for (int i = 0; i < splitted.Length; i++)
             {
                 result += int.Parse(splitted[i].ToString());
+            }
+            if (result == 11 || result == 22 || result == 33)
+            {
+                isMaster = true;
+                masterNumber = result;
             }
             return result.ToString();
         }
