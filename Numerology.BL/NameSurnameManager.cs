@@ -159,7 +159,7 @@ namespace Numerology.BL
         public Matrix NameMatrix { get; set; }
 
         public void SetName(Language lang, string name, string surname, string fathersname, int lifeWayNumber)
-        {
+        {            
             language = lang;
             nameRaw = name;
             surnameRaw = surname;
@@ -214,7 +214,7 @@ namespace Numerology.BL
                 GetVowelsAndConsonantsOfNameAndSurnameString + //p.9
                 GetLifeWayNumberString + //p.10
                 GetVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberString; //p.11
-
+            
             for (int i = 0; i < Matrix.Capacity; i++)
             {
                 var count = CountNumber(input, (i + 1).ToString());
@@ -248,8 +248,8 @@ namespace Numerology.BL
         }
 
         private string NarrowToOneNumber(string input, out bool isMaster, out int masterNumber)
-        {
-            string result = input;
+        {            
+            string result = string.IsNullOrEmpty(input) ? "0" : input;
             isMaster = false;
             masterNumber = 0;
 
