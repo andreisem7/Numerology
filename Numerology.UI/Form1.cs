@@ -323,7 +323,87 @@ namespace Numerology.UI
             }
         }
 
-        #endregion /Menu events        
+        private void SaveForPrint_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var defaultFilename = GetNameForScreenshot();
+            
+            saveFileDialog1.InitialDirectory = defaultPath;
+            saveFileDialog1.FileName = defaultFilename;
+            saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
+            saveFileDialog1.Title = "Сохранить изображение для печати";
+            saveFileDialog1.OverwritePrompt = true;
+            saveFileDialog1.CheckPathExists = true;
+            saveFileDialog1.AddExtension = true;
+            saveFileDialog1.SupportMultiDottedExtensions = true;
+            saveFileDialog1.DefaultExt = ".jpg";
+            var defaultImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if (string.IsNullOrEmpty(saveFileDialog1.FileName))
+                {                    
+                    MessageBox.Show("Имя файла не указано.");                    
+                    return;
+                }
+                
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        defaultImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+                        break;
+
+                    case 2:                        
+                        defaultImageFormat = System.Drawing.Imaging.ImageFormat.Bmp;
+                        break;
+
+                    case 3:                        
+                        defaultImageFormat = System.Drawing.Imaging.ImageFormat.Gif;
+                        break;
+                }
+
+                Rectangle bounds = this.Bounds;
+                using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+                {
+                    using (Graphics g = Graphics.FromImage(bitmap))
+                    {
+                        System.Threading.Thread.Sleep(1500);
+                        g.CopyFromScreen(new Point(bounds.Left, bounds.Top), Point.Empty, bounds.Size);
+                    }
+                    defaultFilename = Path.Combine(saveFileDialog1.InitialDirectory, saveFileDialog1.FileName);
+                    bitmap.Save(defaultFilename, defaultImageFormat);
+
+                    MessageBox.Show("Успешно сохранено.", "Подтверждение", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        #endregion /Menu events 
+        
+        private string GetNameForScreenshot()
+        {
+            var name = "EmptyName";
+            var dateString = "";
+            if (numerologyObject != null)
+            {
+                if (numerologyObject.NameObject != null)
+                {
+                    var firstname = numerologyObject.NameObject.GetNameRaw.Trim();
+                    var lastname = numerologyObject.NameObject.GetSurnameRaw.Trim();
+                    name = firstname + "_" + lastname;
+                }
+                if (numerologyObject.DOBObject != null)
+                {
+                    var day = numerologyObject.DOBObject.GetDayString;
+                    var month = numerologyObject.DOBObject.GetMonthString;
+                    var year = numerologyObject.DOBObject.GetYearString;
+                    
+                    dateString = day + "_" + month + "_" + year;
+                }
+            }
+
+            return name + "_" + dateString;
+        }
 
         private void SetMatrixIntersection(List<MatrixCell> matrix)
         {
@@ -788,6 +868,6 @@ namespace Numerology.UI
         private NumerologyObject InitNumerologyObject()
         {
             return Manager.InitNumerologyObject();
-        }
+        }        
     }
 }

@@ -82,6 +82,81 @@ namespace Numerology.UI
             chrPeaks.Series["Peaks"].Points.Clear();
             foreach (var item in peaks) chrPeaks.Series["Peaks"].Points.AddXY(item.X, item.Y);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var defaultFilename = GetNameForScreenshot(comparison) + "_chart";
+
+            saveFileDialog1.InitialDirectory = defaultPath;
+            saveFileDialog1.FileName = defaultFilename;
+            saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
+            saveFileDialog1.Title = "Сохранить изображение для печати";
+            saveFileDialog1.OverwritePrompt = true;
+            saveFileDialog1.CheckPathExists = true;
+            saveFileDialog1.AddExtension = true;
+            saveFileDialog1.SupportMultiDottedExtensions = true;
+            saveFileDialog1.DefaultExt = ".jpg";
+            var defaultImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if (string.IsNullOrEmpty(saveFileDialog1.FileName))
+                {
+                    MessageBox.Show("Имя файла не указано.");
+                    return;
+                }
+
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        defaultImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+                        break;
+
+                    case 2:
+                        defaultImageFormat = System.Drawing.Imaging.ImageFormat.Bmp;
+                        break;
+
+                    case 3:
+                        defaultImageFormat = System.Drawing.Imaging.ImageFormat.Gif;
+                        break;
+                }
+
+                Rectangle bounds = this.Bounds;
+                using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+                {
+                    using (Graphics g = Graphics.FromImage(bitmap))
+                    {
+                        System.Threading.Thread.Sleep(1500);
+                        g.CopyFromScreen(new Point(bounds.Left, bounds.Top), Point.Empty, bounds.Size);
+                    }
+                    defaultFilename = Path.Combine(saveFileDialog1.InitialDirectory, saveFileDialog1.FileName);
+                    bitmap.Save(defaultFilename, defaultImageFormat);
+
+                    MessageBox.Show("Успешно сохранено.", "Подтверждение", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private string GetNameForScreenshot(Comparison comparison)
+        {
+            var name = "EmptyName";
+            var dateString = "";
+            if (comparison != null)
+            {
+                var firstname = comparison.Name;
+                var lastname = comparison.Surname;
+                name = firstname + "_" + lastname;
+
+                var day = DateOfBirthObject.GetString(comparison.DOB.Day, 2);
+                var month = DateOfBirthObject.GetString(comparison.DOB.Month, 2);
+                var year = DateOfBirthObject.GetString(comparison.DOB.Year, 4);
+
+                dateString = day + "_" + month + "_" + year;
+            }
+
+            return name + "_" + dateString;
+        }
     }
 
     public struct Peak

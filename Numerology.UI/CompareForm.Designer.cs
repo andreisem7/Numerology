@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.grbPersonOne = new System.Windows.Forms.GroupBox();
+            this.txbFathername1 = new System.Windows.Forms.TextBox();
+            this.lblFathername1 = new System.Windows.Forms.Label();
             this.lblLifeCycleValueAfter1 = new System.Windows.Forms.Label();
             this.lblLifeCycleValue1Slash = new System.Windows.Forms.Label();
             this.lblLifeCycleValueBefore1 = new System.Windows.Forms.Label();
@@ -59,6 +61,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.grbPersonTwo = new System.Windows.Forms.GroupBox();
+            this.txbFathername2 = new System.Windows.Forms.TextBox();
+            this.lblFathername2 = new System.Windows.Forms.Label();
             this.lblLifeCycleValue2Slash = new System.Windows.Forms.Label();
             this.lblLifeCycleValueBefore2 = new System.Windows.Forms.Label();
             this.lblLifeCycleValueAfter2 = new System.Windows.Forms.Label();
@@ -124,10 +128,8 @@
             this.pnlCompatibilityBase = new System.Windows.Forms.Panel();
             this.lblSpiritual = new System.Windows.Forms.Label();
             this.lblEveryDay = new System.Windows.Forms.Label();
-            this.lblFathername1 = new System.Windows.Forms.Label();
-            this.txbFathername1 = new System.Windows.Forms.TextBox();
-            this.lblFathername2 = new System.Windows.Forms.Label();
-            this.txbFathername2 = new System.Windows.Forms.TextBox();
+            this.saveForPrint = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.grbPersonOne.SuspendLayout();
             this.grbPersonTwo.SuspendLayout();
             this.grbCompatibility.SuspendLayout();
@@ -164,18 +166,35 @@
             this.grbPersonOne.Controls.Add(this.txbFile1);
             this.grbPersonOne.Controls.Add(this.lblFileName1);
             this.grbPersonOne.Controls.Add(this.btnSelectPersonOne);
-            this.grbPersonOne.Location = new System.Drawing.Point(136, 12);
+            this.grbPersonOne.Location = new System.Drawing.Point(91, 7);
             this.grbPersonOne.Name = "grbPersonOne";
-            this.grbPersonOne.Size = new System.Drawing.Size(345, 498);
+            this.grbPersonOne.Size = new System.Drawing.Size(345, 480);
             this.grbPersonOne.TabIndex = 0;
             this.grbPersonOne.TabStop = false;
             this.grbPersonOne.Text = "Первый объект";
+            // 
+            // txbFathername1
+            // 
+            this.txbFathername1.Location = new System.Drawing.Point(73, 145);
+            this.txbFathername1.Name = "txbFathername1";
+            this.txbFathername1.ReadOnly = true;
+            this.txbFathername1.Size = new System.Drawing.Size(266, 20);
+            this.txbFathername1.TabIndex = 28;
+            // 
+            // lblFathername1
+            // 
+            this.lblFathername1.AutoSize = true;
+            this.lblFathername1.Location = new System.Drawing.Point(10, 149);
+            this.lblFathername1.Name = "lblFathername1";
+            this.lblFathername1.Size = new System.Drawing.Size(57, 13);
+            this.lblFathername1.TabIndex = 27;
+            this.lblFathername1.Text = "Отчество:";
             // 
             // lblLifeCycleValueAfter1
             // 
             this.lblLifeCycleValueAfter1.AutoSize = true;
             this.lblLifeCycleValueAfter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLifeCycleValueAfter1.Location = new System.Drawing.Point(309, 443);
+            this.lblLifeCycleValueAfter1.Location = new System.Drawing.Point(306, 427);
             this.lblLifeCycleValueAfter1.Name = "lblLifeCycleValueAfter1";
             this.lblLifeCycleValueAfter1.Size = new System.Drawing.Size(30, 31);
             this.lblLifeCycleValueAfter1.TabIndex = 26;
@@ -185,7 +204,7 @@
             // 
             this.lblLifeCycleValue1Slash.AutoSize = true;
             this.lblLifeCycleValue1Slash.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLifeCycleValue1Slash.Location = new System.Drawing.Point(293, 443);
+            this.lblLifeCycleValue1Slash.Location = new System.Drawing.Point(290, 427);
             this.lblLifeCycleValue1Slash.Name = "lblLifeCycleValue1Slash";
             this.lblLifeCycleValue1Slash.Size = new System.Drawing.Size(23, 31);
             this.lblLifeCycleValue1Slash.TabIndex = 25;
@@ -195,7 +214,7 @@
             // 
             this.lblLifeCycleValueBefore1.AutoSize = true;
             this.lblLifeCycleValueBefore1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLifeCycleValueBefore1.Location = new System.Drawing.Point(271, 443);
+            this.lblLifeCycleValueBefore1.Location = new System.Drawing.Point(268, 427);
             this.lblLifeCycleValueBefore1.Name = "lblLifeCycleValueBefore1";
             this.lblLifeCycleValueBefore1.Size = new System.Drawing.Size(30, 31);
             this.lblLifeCycleValueBefore1.TabIndex = 24;
@@ -204,7 +223,7 @@
             // lblLifeCycle1
             // 
             this.lblLifeCycle1.AutoSize = true;
-            this.lblLifeCycle1.Location = new System.Drawing.Point(176, 450);
+            this.lblLifeCycle1.Location = new System.Drawing.Point(173, 434);
             this.lblLifeCycle1.Name = "lblLifeCycle1";
             this.lblLifeCycle1.Size = new System.Drawing.Size(89, 13);
             this.lblLifeCycle1.TabIndex = 23;
@@ -214,7 +233,7 @@
             // 
             this.lblProblemNumberValue1.AutoSize = true;
             this.lblProblemNumberValue1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProblemNumberValue1.Location = new System.Drawing.Point(300, 412);
+            this.lblProblemNumberValue1.Location = new System.Drawing.Point(297, 396);
             this.lblProblemNumberValue1.Name = "lblProblemNumberValue1";
             this.lblProblemNumberValue1.Size = new System.Drawing.Size(46, 31);
             this.lblProblemNumberValue1.TabIndex = 22;
@@ -224,7 +243,7 @@
             // 
             this.lblPeakNumberValue1.AutoSize = true;
             this.lblPeakNumberValue1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPeakNumberValue1.Location = new System.Drawing.Point(293, 381);
+            this.lblPeakNumberValue1.Location = new System.Drawing.Point(290, 365);
             this.lblPeakNumberValue1.Name = "lblPeakNumberValue1";
             this.lblPeakNumberValue1.Size = new System.Drawing.Size(46, 31);
             this.lblPeakNumberValue1.TabIndex = 21;
@@ -233,7 +252,7 @@
             // lblProblemNumber1
             // 
             this.lblProblemNumber1.AutoSize = true;
-            this.lblProblemNumber1.Location = new System.Drawing.Point(197, 421);
+            this.lblProblemNumber1.Location = new System.Drawing.Point(194, 405);
             this.lblProblemNumber1.Name = "lblProblemNumber1";
             this.lblProblemNumber1.Size = new System.Drawing.Size(97, 13);
             this.lblProblemNumber1.TabIndex = 20;
@@ -242,7 +261,7 @@
             // lblPeakNumber1
             // 
             this.lblPeakNumber1.AutoSize = true;
-            this.lblPeakNumber1.Location = new System.Drawing.Point(203, 394);
+            this.lblPeakNumber1.Location = new System.Drawing.Point(200, 378);
             this.lblPeakNumber1.Name = "lblPeakNumber1";
             this.lblPeakNumber1.Size = new System.Drawing.Size(91, 13);
             this.lblPeakNumber1.TabIndex = 19;
@@ -252,7 +271,7 @@
             // 
             this.lblPowerNumberValue1.AutoSize = true;
             this.lblPowerNumberValue1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPowerNumberValue1.Location = new System.Drawing.Point(309, 350);
+            this.lblPowerNumberValue1.Location = new System.Drawing.Point(306, 334);
             this.lblPowerNumberValue1.Name = "lblPowerNumberValue1";
             this.lblPowerNumberValue1.Size = new System.Drawing.Size(30, 31);
             this.lblPowerNumberValue1.TabIndex = 18;
@@ -261,7 +280,7 @@
             // lblPowerNumber1
             // 
             this.lblPowerNumber1.AutoSize = true;
-            this.lblPowerNumber1.Location = new System.Drawing.Point(223, 365);
+            this.lblPowerNumber1.Location = new System.Drawing.Point(220, 349);
             this.lblPowerNumber1.Name = "lblPowerNumber1";
             this.lblPowerNumber1.Size = new System.Drawing.Size(71, 13);
             this.lblPowerNumber1.TabIndex = 17;
@@ -271,7 +290,7 @@
             // 
             this.lblDestinyNumberValue1.AutoSize = true;
             this.lblDestinyNumberValue1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDestinyNumberValue1.Location = new System.Drawing.Point(309, 319);
+            this.lblDestinyNumberValue1.Location = new System.Drawing.Point(306, 303);
             this.lblDestinyNumberValue1.Name = "lblDestinyNumberValue1";
             this.lblDestinyNumberValue1.Size = new System.Drawing.Size(30, 31);
             this.lblDestinyNumberValue1.TabIndex = 16;
@@ -280,7 +299,7 @@
             // lblDestinyNumber1
             // 
             this.lblDestinyNumber1.AutoSize = true;
-            this.lblDestinyNumber1.Location = new System.Drawing.Point(212, 334);
+            this.lblDestinyNumber1.Location = new System.Drawing.Point(209, 318);
             this.lblDestinyNumber1.Name = "lblDestinyNumber1";
             this.lblDestinyNumber1.Size = new System.Drawing.Size(82, 13);
             this.lblDestinyNumber1.TabIndex = 15;
@@ -290,7 +309,7 @@
             // 
             this.lblPersonalityNumberValue1.AutoSize = true;
             this.lblPersonalityNumberValue1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalityNumberValue1.Location = new System.Drawing.Point(309, 288);
+            this.lblPersonalityNumberValue1.Location = new System.Drawing.Point(306, 272);
             this.lblPersonalityNumberValue1.Name = "lblPersonalityNumberValue1";
             this.lblPersonalityNumberValue1.Size = new System.Drawing.Size(30, 31);
             this.lblPersonalityNumberValue1.TabIndex = 14;
@@ -299,7 +318,7 @@
             // lblPersonalityNumber1
             // 
             this.lblPersonalityNumber1.AutoSize = true;
-            this.lblPersonalityNumber1.Location = new System.Drawing.Point(203, 303);
+            this.lblPersonalityNumber1.Location = new System.Drawing.Point(200, 287);
             this.lblPersonalityNumber1.Name = "lblPersonalityNumber1";
             this.lblPersonalityNumber1.Size = new System.Drawing.Size(91, 13);
             this.lblPersonalityNumber1.TabIndex = 13;
@@ -309,7 +328,7 @@
             // 
             this.lblSoulNumberValue1.AutoSize = true;
             this.lblSoulNumberValue1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoulNumberValue1.Location = new System.Drawing.Point(309, 257);
+            this.lblSoulNumberValue1.Location = new System.Drawing.Point(306, 241);
             this.lblSoulNumberValue1.Name = "lblSoulNumberValue1";
             this.lblSoulNumberValue1.Size = new System.Drawing.Size(30, 31);
             this.lblSoulNumberValue1.TabIndex = 12;
@@ -318,7 +337,7 @@
             // lblSoulNumber1
             // 
             this.lblSoulNumber1.AutoSize = true;
-            this.lblSoulNumber1.Location = new System.Drawing.Point(224, 272);
+            this.lblSoulNumber1.Location = new System.Drawing.Point(221, 256);
             this.lblSoulNumber1.Name = "lblSoulNumber1";
             this.lblSoulNumber1.Size = new System.Drawing.Size(70, 13);
             this.lblSoulNumber1.TabIndex = 11;
@@ -328,7 +347,7 @@
             // 
             this.lblWayOfLifeValue1.AutoSize = true;
             this.lblWayOfLifeValue1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWayOfLifeValue1.Location = new System.Drawing.Point(309, 226);
+            this.lblWayOfLifeValue1.Location = new System.Drawing.Point(306, 210);
             this.lblWayOfLifeValue1.Name = "lblWayOfLifeValue1";
             this.lblWayOfLifeValue1.Size = new System.Drawing.Size(30, 31);
             this.lblWayOfLifeValue1.TabIndex = 10;
@@ -337,7 +356,7 @@
             // lblWayOfLife1
             // 
             this.lblWayOfLife1.AutoSize = true;
-            this.lblWayOfLife1.Location = new System.Drawing.Point(216, 241);
+            this.lblWayOfLife1.Location = new System.Drawing.Point(213, 225);
             this.lblWayOfLife1.Name = "lblWayOfLife1";
             this.lblWayOfLife1.Size = new System.Drawing.Size(78, 13);
             this.lblWayOfLife1.TabIndex = 9;
@@ -464,18 +483,35 @@
             this.grbPersonTwo.Controls.Add(this.txbFile2);
             this.grbPersonTwo.Controls.Add(this.btnSelectPersonTwo);
             this.grbPersonTwo.Controls.Add(this.lblFileName2);
-            this.grbPersonTwo.Location = new System.Drawing.Point(750, 13);
+            this.grbPersonTwo.Location = new System.Drawing.Point(705, 7);
             this.grbPersonTwo.Name = "grbPersonTwo";
-            this.grbPersonTwo.Size = new System.Drawing.Size(345, 498);
+            this.grbPersonTwo.Size = new System.Drawing.Size(345, 480);
             this.grbPersonTwo.TabIndex = 1;
             this.grbPersonTwo.TabStop = false;
             this.grbPersonTwo.Text = "Второй объект";
+            // 
+            // txbFathername2
+            // 
+            this.txbFathername2.Location = new System.Drawing.Point(73, 145);
+            this.txbFathername2.Name = "txbFathername2";
+            this.txbFathername2.ReadOnly = true;
+            this.txbFathername2.Size = new System.Drawing.Size(265, 20);
+            this.txbFathername2.TabIndex = 28;
+            // 
+            // lblFathername2
+            // 
+            this.lblFathername2.AutoSize = true;
+            this.lblFathername2.Location = new System.Drawing.Point(7, 148);
+            this.lblFathername2.Name = "lblFathername2";
+            this.lblFathername2.Size = new System.Drawing.Size(57, 13);
+            this.lblFathername2.TabIndex = 27;
+            this.lblFathername2.Text = "Отчество:";
             // 
             // lblLifeCycleValue2Slash
             // 
             this.lblLifeCycleValue2Slash.AutoSize = true;
             this.lblLifeCycleValue2Slash.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLifeCycleValue2Slash.Location = new System.Drawing.Point(37, 442);
+            this.lblLifeCycleValue2Slash.Location = new System.Drawing.Point(36, 427);
             this.lblLifeCycleValue2Slash.Name = "lblLifeCycleValue2Slash";
             this.lblLifeCycleValue2Slash.Size = new System.Drawing.Size(23, 31);
             this.lblLifeCycleValue2Slash.TabIndex = 26;
@@ -485,7 +521,7 @@
             // 
             this.lblLifeCycleValueBefore2.AutoSize = true;
             this.lblLifeCycleValueBefore2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLifeCycleValueBefore2.Location = new System.Drawing.Point(16, 442);
+            this.lblLifeCycleValueBefore2.Location = new System.Drawing.Point(15, 427);
             this.lblLifeCycleValueBefore2.Name = "lblLifeCycleValueBefore2";
             this.lblLifeCycleValueBefore2.Size = new System.Drawing.Size(30, 31);
             this.lblLifeCycleValueBefore2.TabIndex = 25;
@@ -495,7 +531,7 @@
             // 
             this.lblLifeCycleValueAfter2.AutoSize = true;
             this.lblLifeCycleValueAfter2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLifeCycleValueAfter2.Location = new System.Drawing.Point(53, 442);
+            this.lblLifeCycleValueAfter2.Location = new System.Drawing.Point(52, 427);
             this.lblLifeCycleValueAfter2.Name = "lblLifeCycleValueAfter2";
             this.lblLifeCycleValueAfter2.Size = new System.Drawing.Size(30, 31);
             this.lblLifeCycleValueAfter2.TabIndex = 24;
@@ -504,7 +540,7 @@
             // lblLifeCycle2
             // 
             this.lblLifeCycle2.AutoSize = true;
-            this.lblLifeCycle2.Location = new System.Drawing.Point(88, 449);
+            this.lblLifeCycle2.Location = new System.Drawing.Point(87, 434);
             this.lblLifeCycle2.Name = "lblLifeCycle2";
             this.lblLifeCycle2.Size = new System.Drawing.Size(86, 13);
             this.lblLifeCycle2.TabIndex = 23;
@@ -514,7 +550,7 @@
             // 
             this.lblProblemNumberValue2.AutoSize = true;
             this.lblProblemNumberValue2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProblemNumberValue2.Location = new System.Drawing.Point(14, 411);
+            this.lblProblemNumberValue2.Location = new System.Drawing.Point(13, 396);
             this.lblProblemNumberValue2.Name = "lblProblemNumberValue2";
             this.lblProblemNumberValue2.Size = new System.Drawing.Size(46, 31);
             this.lblProblemNumberValue2.TabIndex = 22;
@@ -524,7 +560,7 @@
             // 
             this.lblPeakNumberValue2.AutoSize = true;
             this.lblPeakNumberValue2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPeakNumberValue2.Location = new System.Drawing.Point(5, 380);
+            this.lblPeakNumberValue2.Location = new System.Drawing.Point(4, 365);
             this.lblPeakNumberValue2.Name = "lblPeakNumberValue2";
             this.lblPeakNumberValue2.Size = new System.Drawing.Size(46, 31);
             this.lblPeakNumberValue2.TabIndex = 21;
@@ -533,7 +569,7 @@
             // lblProblemNumber2
             // 
             this.lblProblemNumber2.AutoSize = true;
-            this.lblProblemNumber2.Location = new System.Drawing.Point(52, 420);
+            this.lblProblemNumber2.Location = new System.Drawing.Point(55, 405);
             this.lblProblemNumber2.Name = "lblProblemNumber2";
             this.lblProblemNumber2.Size = new System.Drawing.Size(94, 13);
             this.lblProblemNumber2.TabIndex = 20;
@@ -542,7 +578,7 @@
             // lblPeakNumber2
             // 
             this.lblPeakNumber2.AutoSize = true;
-            this.lblPeakNumber2.Location = new System.Drawing.Point(52, 393);
+            this.lblPeakNumber2.Location = new System.Drawing.Point(51, 378);
             this.lblPeakNumber2.Name = "lblPeakNumber2";
             this.lblPeakNumber2.Size = new System.Drawing.Size(88, 13);
             this.lblPeakNumber2.TabIndex = 19;
@@ -569,7 +605,7 @@
             // 
             this.lblPowerNumberValue2.AutoSize = true;
             this.lblPowerNumberValue2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPowerNumberValue2.Location = new System.Drawing.Point(21, 349);
+            this.lblPowerNumberValue2.Location = new System.Drawing.Point(20, 334);
             this.lblPowerNumberValue2.Name = "lblPowerNumberValue2";
             this.lblPowerNumberValue2.Size = new System.Drawing.Size(30, 31);
             this.lblPowerNumberValue2.TabIndex = 16;
@@ -579,7 +615,7 @@
             // 
             this.lblDestinyNumberValue2.AutoSize = true;
             this.lblDestinyNumberValue2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDestinyNumberValue2.Location = new System.Drawing.Point(21, 318);
+            this.lblDestinyNumberValue2.Location = new System.Drawing.Point(20, 303);
             this.lblDestinyNumberValue2.Name = "lblDestinyNumberValue2";
             this.lblDestinyNumberValue2.Size = new System.Drawing.Size(30, 31);
             this.lblDestinyNumberValue2.TabIndex = 15;
@@ -589,7 +625,7 @@
             // 
             this.lblPersonalityNumberValue2.AutoSize = true;
             this.lblPersonalityNumberValue2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalityNumberValue2.Location = new System.Drawing.Point(21, 287);
+            this.lblPersonalityNumberValue2.Location = new System.Drawing.Point(20, 272);
             this.lblPersonalityNumberValue2.Name = "lblPersonalityNumberValue2";
             this.lblPersonalityNumberValue2.Size = new System.Drawing.Size(30, 31);
             this.lblPersonalityNumberValue2.TabIndex = 14;
@@ -599,7 +635,7 @@
             // 
             this.lblSoulNumberValue2.AutoSize = true;
             this.lblSoulNumberValue2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoulNumberValue2.Location = new System.Drawing.Point(21, 256);
+            this.lblSoulNumberValue2.Location = new System.Drawing.Point(20, 241);
             this.lblSoulNumberValue2.Name = "lblSoulNumberValue2";
             this.lblSoulNumberValue2.Size = new System.Drawing.Size(30, 31);
             this.lblSoulNumberValue2.TabIndex = 13;
@@ -609,7 +645,7 @@
             // 
             this.lblWayOfLifeValue2.AutoSize = true;
             this.lblWayOfLifeValue2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWayOfLifeValue2.Location = new System.Drawing.Point(21, 225);
+            this.lblWayOfLifeValue2.Location = new System.Drawing.Point(20, 210);
             this.lblWayOfLifeValue2.Name = "lblWayOfLifeValue2";
             this.lblWayOfLifeValue2.Size = new System.Drawing.Size(30, 31);
             this.lblWayOfLifeValue2.TabIndex = 12;
@@ -618,7 +654,7 @@
             // lblPowerNumber2
             // 
             this.lblPowerNumber2.AutoSize = true;
-            this.lblPowerNumber2.Location = new System.Drawing.Point(52, 364);
+            this.lblPowerNumber2.Location = new System.Drawing.Point(51, 349);
             this.lblPowerNumber2.Name = "lblPowerNumber2";
             this.lblPowerNumber2.Size = new System.Drawing.Size(68, 13);
             this.lblPowerNumber2.TabIndex = 11;
@@ -627,7 +663,7 @@
             // lblDestinyNumber2
             // 
             this.lblDestinyNumber2.AutoSize = true;
-            this.lblDestinyNumber2.Location = new System.Drawing.Point(52, 333);
+            this.lblDestinyNumber2.Location = new System.Drawing.Point(51, 318);
             this.lblDestinyNumber2.Name = "lblDestinyNumber2";
             this.lblDestinyNumber2.Size = new System.Drawing.Size(79, 13);
             this.lblDestinyNumber2.TabIndex = 10;
@@ -636,7 +672,7 @@
             // lblPersonalityNumber2
             // 
             this.lblPersonalityNumber2.AutoSize = true;
-            this.lblPersonalityNumber2.Location = new System.Drawing.Point(52, 302);
+            this.lblPersonalityNumber2.Location = new System.Drawing.Point(51, 287);
             this.lblPersonalityNumber2.Name = "lblPersonalityNumber2";
             this.lblPersonalityNumber2.Size = new System.Drawing.Size(88, 13);
             this.lblPersonalityNumber2.TabIndex = 9;
@@ -645,7 +681,7 @@
             // lblSoulNumber2
             // 
             this.lblSoulNumber2.AutoSize = true;
-            this.lblSoulNumber2.Location = new System.Drawing.Point(52, 271);
+            this.lblSoulNumber2.Location = new System.Drawing.Point(51, 256);
             this.lblSoulNumber2.Name = "lblSoulNumber2";
             this.lblSoulNumber2.Size = new System.Drawing.Size(67, 13);
             this.lblSoulNumber2.TabIndex = 8;
@@ -654,7 +690,7 @@
             // lblWayOfLife2
             // 
             this.lblWayOfLife2.AutoSize = true;
-            this.lblWayOfLife2.Location = new System.Drawing.Point(56, 240);
+            this.lblWayOfLife2.Location = new System.Drawing.Point(55, 225);
             this.lblWayOfLife2.Name = "lblWayOfLife2";
             this.lblWayOfLife2.Size = new System.Drawing.Size(75, 13);
             this.lblWayOfLife2.TabIndex = 7;
@@ -724,7 +760,7 @@
             // lblYearCompare
             // 
             this.lblYearCompare.AutoSize = true;
-            this.lblYearCompare.Location = new System.Drawing.Point(502, 12);
+            this.lblYearCompare.Location = new System.Drawing.Point(457, 7);
             this.lblYearCompare.Name = "lblYearCompare";
             this.lblYearCompare.Size = new System.Drawing.Size(242, 13);
             this.lblYearCompare.TabIndex = 2;
@@ -733,7 +769,7 @@
             // cmbYears
             // 
             this.cmbYears.FormattingEnabled = true;
-            this.cmbYears.Location = new System.Drawing.Point(574, 40);
+            this.cmbYears.Location = new System.Drawing.Point(529, 32);
             this.cmbYears.Name = "cmbYears";
             this.cmbYears.Size = new System.Drawing.Size(94, 21);
             this.cmbYears.TabIndex = 3;
@@ -742,7 +778,7 @@
             // lblWorkHeader
             // 
             this.lblWorkHeader.AutoSize = true;
-            this.lblWorkHeader.Location = new System.Drawing.Point(540, 222);
+            this.lblWorkHeader.Location = new System.Drawing.Point(496, 203);
             this.lblWorkHeader.Name = "lblWorkHeader";
             this.lblWorkHeader.Size = new System.Drawing.Size(43, 13);
             this.lblWorkHeader.TabIndex = 4;
@@ -751,7 +787,7 @@
             // lblPersonalHeader
             // 
             this.lblPersonalHeader.AutoSize = true;
-            this.lblPersonalHeader.Location = new System.Drawing.Point(637, 222);
+            this.lblPersonalHeader.Location = new System.Drawing.Point(593, 203);
             this.lblPersonalHeader.Name = "lblPersonalHeader";
             this.lblPersonalHeader.Size = new System.Drawing.Size(40, 13);
             this.lblPersonalHeader.TabIndex = 5;
@@ -761,7 +797,7 @@
             // 
             this.lblWorkWayOfLife.AutoSize = true;
             this.lblWorkWayOfLife.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkWayOfLife.Location = new System.Drawing.Point(550, 239);
+            this.lblWorkWayOfLife.Location = new System.Drawing.Point(506, 220);
             this.lblWorkWayOfLife.Name = "lblWorkWayOfLife";
             this.lblWorkWayOfLife.Size = new System.Drawing.Size(24, 25);
             this.lblWorkWayOfLife.TabIndex = 6;
@@ -771,7 +807,7 @@
             // 
             this.lblPersonalWayOfLife.AutoSize = true;
             this.lblPersonalWayOfLife.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalWayOfLife.Location = new System.Drawing.Point(644, 239);
+            this.lblPersonalWayOfLife.Location = new System.Drawing.Point(600, 220);
             this.lblPersonalWayOfLife.Name = "lblPersonalWayOfLife";
             this.lblPersonalWayOfLife.Size = new System.Drawing.Size(24, 25);
             this.lblPersonalWayOfLife.TabIndex = 7;
@@ -781,7 +817,7 @@
             // 
             this.lblWorkSoul.AutoSize = true;
             this.lblWorkSoul.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkSoul.Location = new System.Drawing.Point(550, 270);
+            this.lblWorkSoul.Location = new System.Drawing.Point(506, 251);
             this.lblWorkSoul.Name = "lblWorkSoul";
             this.lblWorkSoul.Size = new System.Drawing.Size(24, 25);
             this.lblWorkSoul.TabIndex = 8;
@@ -791,7 +827,7 @@
             // 
             this.lblPersonalSoul.AutoSize = true;
             this.lblPersonalSoul.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalSoul.Location = new System.Drawing.Point(644, 270);
+            this.lblPersonalSoul.Location = new System.Drawing.Point(600, 251);
             this.lblPersonalSoul.Name = "lblPersonalSoul";
             this.lblPersonalSoul.Size = new System.Drawing.Size(24, 25);
             this.lblPersonalSoul.TabIndex = 9;
@@ -801,7 +837,7 @@
             // 
             this.lblWorkPersonality.AutoSize = true;
             this.lblWorkPersonality.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkPersonality.Location = new System.Drawing.Point(550, 301);
+            this.lblWorkPersonality.Location = new System.Drawing.Point(506, 282);
             this.lblWorkPersonality.Name = "lblWorkPersonality";
             this.lblWorkPersonality.Size = new System.Drawing.Size(24, 25);
             this.lblWorkPersonality.TabIndex = 10;
@@ -811,7 +847,7 @@
             // 
             this.lblPersonalPersonality.AutoSize = true;
             this.lblPersonalPersonality.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalPersonality.Location = new System.Drawing.Point(644, 301);
+            this.lblPersonalPersonality.Location = new System.Drawing.Point(600, 282);
             this.lblPersonalPersonality.Name = "lblPersonalPersonality";
             this.lblPersonalPersonality.Size = new System.Drawing.Size(24, 25);
             this.lblPersonalPersonality.TabIndex = 11;
@@ -821,7 +857,7 @@
             // 
             this.lblWorkDestiny.AutoSize = true;
             this.lblWorkDestiny.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkDestiny.Location = new System.Drawing.Point(550, 332);
+            this.lblWorkDestiny.Location = new System.Drawing.Point(506, 313);
             this.lblWorkDestiny.Name = "lblWorkDestiny";
             this.lblWorkDestiny.Size = new System.Drawing.Size(24, 25);
             this.lblWorkDestiny.TabIndex = 12;
@@ -831,7 +867,7 @@
             // 
             this.lblPersonalDestiny.AutoSize = true;
             this.lblPersonalDestiny.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalDestiny.Location = new System.Drawing.Point(644, 332);
+            this.lblPersonalDestiny.Location = new System.Drawing.Point(600, 313);
             this.lblPersonalDestiny.Name = "lblPersonalDestiny";
             this.lblPersonalDestiny.Size = new System.Drawing.Size(24, 25);
             this.lblPersonalDestiny.TabIndex = 13;
@@ -841,7 +877,7 @@
             // 
             this.lblWorkPower.AutoSize = true;
             this.lblWorkPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkPower.Location = new System.Drawing.Point(550, 363);
+            this.lblWorkPower.Location = new System.Drawing.Point(506, 344);
             this.lblWorkPower.Name = "lblWorkPower";
             this.lblWorkPower.Size = new System.Drawing.Size(24, 25);
             this.lblWorkPower.TabIndex = 14;
@@ -851,7 +887,7 @@
             // 
             this.lblPersonalPower.AutoSize = true;
             this.lblPersonalPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalPower.Location = new System.Drawing.Point(644, 363);
+            this.lblPersonalPower.Location = new System.Drawing.Point(600, 344);
             this.lblPersonalPower.Name = "lblPersonalPower";
             this.lblPersonalPower.Size = new System.Drawing.Size(24, 25);
             this.lblPersonalPower.TabIndex = 15;
@@ -861,7 +897,7 @@
             // 
             this.lblWorkPeak.AutoSize = true;
             this.lblWorkPeak.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkPeak.Location = new System.Drawing.Point(550, 394);
+            this.lblWorkPeak.Location = new System.Drawing.Point(506, 375);
             this.lblWorkPeak.Name = "lblWorkPeak";
             this.lblWorkPeak.Size = new System.Drawing.Size(24, 25);
             this.lblWorkPeak.TabIndex = 16;
@@ -871,7 +907,7 @@
             // 
             this.lblPersonalPeak.AutoSize = true;
             this.lblPersonalPeak.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalPeak.Location = new System.Drawing.Point(644, 394);
+            this.lblPersonalPeak.Location = new System.Drawing.Point(600, 375);
             this.lblPersonalPeak.Name = "lblPersonalPeak";
             this.lblPersonalPeak.Size = new System.Drawing.Size(24, 25);
             this.lblPersonalPeak.TabIndex = 17;
@@ -881,7 +917,7 @@
             // 
             this.lblWorkProblem.AutoSize = true;
             this.lblWorkProblem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkProblem.Location = new System.Drawing.Point(550, 425);
+            this.lblWorkProblem.Location = new System.Drawing.Point(506, 406);
             this.lblWorkProblem.Name = "lblWorkProblem";
             this.lblWorkProblem.Size = new System.Drawing.Size(24, 25);
             this.lblWorkProblem.TabIndex = 18;
@@ -891,7 +927,7 @@
             // 
             this.lblPersonalProblem.AutoSize = true;
             this.lblPersonalProblem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalProblem.Location = new System.Drawing.Point(644, 425);
+            this.lblPersonalProblem.Location = new System.Drawing.Point(600, 406);
             this.lblPersonalProblem.Name = "lblPersonalProblem";
             this.lblPersonalProblem.Size = new System.Drawing.Size(24, 25);
             this.lblPersonalProblem.TabIndex = 19;
@@ -901,7 +937,7 @@
             // 
             this.lblWorkCycleBefore.AutoSize = true;
             this.lblWorkCycleBefore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkCycleBefore.Location = new System.Drawing.Point(520, 456);
+            this.lblWorkCycleBefore.Location = new System.Drawing.Point(476, 437);
             this.lblWorkCycleBefore.Name = "lblWorkCycleBefore";
             this.lblWorkCycleBefore.Size = new System.Drawing.Size(24, 25);
             this.lblWorkCycleBefore.TabIndex = 20;
@@ -911,7 +947,7 @@
             // 
             this.lblWorkCycleSlash.AutoSize = true;
             this.lblWorkCycleSlash.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkCycleSlash.Location = new System.Drawing.Point(537, 456);
+            this.lblWorkCycleSlash.Location = new System.Drawing.Point(493, 437);
             this.lblWorkCycleSlash.Name = "lblWorkCycleSlash";
             this.lblWorkCycleSlash.Size = new System.Drawing.Size(19, 25);
             this.lblWorkCycleSlash.TabIndex = 21;
@@ -921,7 +957,7 @@
             // 
             this.lblWorkCycleAfter.AutoSize = true;
             this.lblWorkCycleAfter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkCycleAfter.Location = new System.Drawing.Point(550, 456);
+            this.lblWorkCycleAfter.Location = new System.Drawing.Point(506, 437);
             this.lblWorkCycleAfter.Name = "lblWorkCycleAfter";
             this.lblWorkCycleAfter.Size = new System.Drawing.Size(24, 25);
             this.lblWorkCycleAfter.TabIndex = 22;
@@ -931,7 +967,7 @@
             // 
             this.lblPersonalCycleBefore.AutoSize = true;
             this.lblPersonalCycleBefore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalCycleBefore.Location = new System.Drawing.Point(644, 456);
+            this.lblPersonalCycleBefore.Location = new System.Drawing.Point(600, 437);
             this.lblPersonalCycleBefore.Name = "lblPersonalCycleBefore";
             this.lblPersonalCycleBefore.Size = new System.Drawing.Size(24, 25);
             this.lblPersonalCycleBefore.TabIndex = 23;
@@ -941,7 +977,7 @@
             // 
             this.lblPersonalCycleSlash.AutoSize = true;
             this.lblPersonalCycleSlash.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalCycleSlash.Location = new System.Drawing.Point(663, 456);
+            this.lblPersonalCycleSlash.Location = new System.Drawing.Point(619, 437);
             this.lblPersonalCycleSlash.Name = "lblPersonalCycleSlash";
             this.lblPersonalCycleSlash.Size = new System.Drawing.Size(19, 25);
             this.lblPersonalCycleSlash.TabIndex = 24;
@@ -951,7 +987,7 @@
             // 
             this.lblPersonalCycleAfter.AutoSize = true;
             this.lblPersonalCycleAfter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalCycleAfter.Location = new System.Drawing.Point(676, 456);
+            this.lblPersonalCycleAfter.Location = new System.Drawing.Point(632, 437);
             this.lblPersonalCycleAfter.Name = "lblPersonalCycleAfter";
             this.lblPersonalCycleAfter.Size = new System.Drawing.Size(24, 25);
             this.lblPersonalCycleAfter.TabIndex = 25;
@@ -961,7 +997,7 @@
             // 
             this.lblWorkCoeffBefore.AutoSize = true;
             this.lblWorkCoeffBefore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkCoeffBefore.Location = new System.Drawing.Point(487, 481);
+            this.lblWorkCoeffBefore.Location = new System.Drawing.Point(443, 462);
             this.lblWorkCoeffBefore.Name = "lblWorkCoeffBefore";
             this.lblWorkCoeffBefore.Size = new System.Drawing.Size(24, 25);
             this.lblWorkCoeffBefore.TabIndex = 26;
@@ -972,7 +1008,7 @@
             // 
             this.lblWorkCoeffSlash.AutoSize = true;
             this.lblWorkCoeffSlash.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkCoeffSlash.Location = new System.Drawing.Point(528, 481);
+            this.lblWorkCoeffSlash.Location = new System.Drawing.Point(484, 462);
             this.lblWorkCoeffSlash.Name = "lblWorkCoeffSlash";
             this.lblWorkCoeffSlash.Size = new System.Drawing.Size(19, 25);
             this.lblWorkCoeffSlash.TabIndex = 27;
@@ -982,7 +1018,7 @@
             // 
             this.lblWorkCoeffAfter.AutoSize = true;
             this.lblWorkCoeffAfter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorkCoeffAfter.Location = new System.Drawing.Point(541, 481);
+            this.lblWorkCoeffAfter.Location = new System.Drawing.Point(497, 462);
             this.lblWorkCoeffAfter.Name = "lblWorkCoeffAfter";
             this.lblWorkCoeffAfter.Size = new System.Drawing.Size(24, 25);
             this.lblWorkCoeffAfter.TabIndex = 28;
@@ -992,7 +1028,7 @@
             // 
             this.lblPersonalCoeffBefore.AutoSize = true;
             this.lblPersonalCoeffBefore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalCoeffBefore.Location = new System.Drawing.Point(632, 480);
+            this.lblPersonalCoeffBefore.Location = new System.Drawing.Point(588, 461);
             this.lblPersonalCoeffBefore.Name = "lblPersonalCoeffBefore";
             this.lblPersonalCoeffBefore.Size = new System.Drawing.Size(24, 25);
             this.lblPersonalCoeffBefore.TabIndex = 29;
@@ -1003,7 +1039,7 @@
             // 
             this.lblPersonalCoeffSlash.AutoSize = true;
             this.lblPersonalCoeffSlash.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonalCoeffSlash.Location = new System.Drawing.Point(676, 481);
+            this.lblPersonalCoeffSlash.Location = new System.Drawing.Point(632, 462);
             this.lblPersonalCoeffSlash.Name = "lblPersonalCoeffSlash";
             this.lblPersonalCoeffSlash.Size = new System.Drawing.Size(19, 25);
             this.lblPersonalCoeffSlash.TabIndex = 30;
@@ -1013,7 +1049,7 @@
             // 
             this.lblpersonalCoeffAfter.AutoSize = true;
             this.lblpersonalCoeffAfter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpersonalCoeffAfter.Location = new System.Drawing.Point(690, 480);
+            this.lblpersonalCoeffAfter.Location = new System.Drawing.Point(646, 461);
             this.lblpersonalCoeffAfter.Name = "lblpersonalCoeffAfter";
             this.lblpersonalCoeffAfter.Size = new System.Drawing.Size(24, 25);
             this.lblpersonalCoeffAfter.TabIndex = 31;
@@ -1028,9 +1064,9 @@
             this.grbCompatibility.Controls.Add(this.pnlCompatibilityBase);
             this.grbCompatibility.Controls.Add(this.lblSpiritual);
             this.grbCompatibility.Controls.Add(this.lblEveryDay);
-            this.grbCompatibility.Location = new System.Drawing.Point(13, 522);
+            this.grbCompatibility.Location = new System.Drawing.Point(13, 493);
             this.grbCompatibility.Name = "grbCompatibility";
-            this.grbCompatibility.Size = new System.Drawing.Size(1225, 226);
+            this.grbCompatibility.Size = new System.Drawing.Size(1225, 211);
             this.grbCompatibility.TabIndex = 32;
             this.grbCompatibility.TabStop = false;
             this.grbCompatibility.Text = "Совместимость";
@@ -1073,7 +1109,7 @@
             // 
             // pnlCompatibilityBase
             // 
-            this.pnlCompatibilityBase.Location = new System.Drawing.Point(11, 61);
+            this.pnlCompatibilityBase.Location = new System.Drawing.Point(9, 51);
             this.pnlCompatibilityBase.Name = "pnlCompatibilityBase";
             this.pnlCompatibilityBase.Size = new System.Drawing.Size(1200, 136);
             this.pnlCompatibilityBase.TabIndex = 2;
@@ -1081,7 +1117,7 @@
             // lblSpiritual
             // 
             this.lblSpiritual.AutoSize = true;
-            this.lblSpiritual.Location = new System.Drawing.Point(6, 201);
+            this.lblSpiritual.Location = new System.Drawing.Point(4, 191);
             this.lblSpiritual.Name = "lblSpiritual";
             this.lblSpiritual.Size = new System.Drawing.Size(56, 13);
             this.lblSpiritual.TabIndex = 1;
@@ -1090,51 +1126,28 @@
             // lblEveryDay
             // 
             this.lblEveryDay.AutoSize = true;
-            this.lblEveryDay.Location = new System.Drawing.Point(6, 38);
+            this.lblEveryDay.Location = new System.Drawing.Point(9, 35);
             this.lblEveryDay.Name = "lblEveryDay";
             this.lblEveryDay.Size = new System.Drawing.Size(51, 13);
             this.lblEveryDay.TabIndex = 0;
             this.lblEveryDay.Text = "Бытовая";
             // 
-            // lblFathername1
+            // saveForPrint
             // 
-            this.lblFathername1.AutoSize = true;
-            this.lblFathername1.Location = new System.Drawing.Point(10, 149);
-            this.lblFathername1.Name = "lblFathername1";
-            this.lblFathername1.Size = new System.Drawing.Size(57, 13);
-            this.lblFathername1.TabIndex = 27;
-            this.lblFathername1.Text = "Отчество:";
-            // 
-            // txbFathername1
-            // 
-            this.txbFathername1.Location = new System.Drawing.Point(73, 145);
-            this.txbFathername1.Name = "txbFathername1";
-            this.txbFathername1.ReadOnly = true;
-            this.txbFathername1.Size = new System.Drawing.Size(266, 20);
-            this.txbFathername1.TabIndex = 28;
-            // 
-            // lblFathername2
-            // 
-            this.lblFathername2.AutoSize = true;
-            this.lblFathername2.Location = new System.Drawing.Point(7, 148);
-            this.lblFathername2.Name = "lblFathername2";
-            this.lblFathername2.Size = new System.Drawing.Size(57, 13);
-            this.lblFathername2.TabIndex = 27;
-            this.lblFathername2.Text = "Отчество:";
-            // 
-            // txbFathername2
-            // 
-            this.txbFathername2.Location = new System.Drawing.Point(73, 145);
-            this.txbFathername2.Name = "txbFathername2";
-            this.txbFathername2.ReadOnly = true;
-            this.txbFathername2.Size = new System.Drawing.Size(265, 20);
-            this.txbFathername2.TabIndex = 28;
+            this.saveForPrint.Location = new System.Drawing.Point(1068, 26);
+            this.saveForPrint.Name = "saveForPrint";
+            this.saveForPrint.Size = new System.Drawing.Size(170, 23);
+            this.saveForPrint.TabIndex = 33;
+            this.saveForPrint.Text = "Сохранить для печати";
+            this.saveForPrint.UseVisualStyleBackColor = true;
+            this.saveForPrint.Click += new System.EventHandler(this.saveForPrint_Click);
             // 
             // CompareForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1250, 757);
+            this.ClientSize = new System.Drawing.Size(1250, 711);
+            this.Controls.Add(this.saveForPrint);
             this.Controls.Add(this.grbCompatibility);
             this.Controls.Add(this.lblpersonalCoeffAfter);
             this.Controls.Add(this.lblPersonalCoeffSlash);
@@ -1170,10 +1183,11 @@
             this.Controls.Add(this.grbPersonOne);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1266, 796);
+            this.MaximumSize = new System.Drawing.Size(1266, 750);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1266, 796);
+            this.MinimumSize = new System.Drawing.Size(1266, 750);
             this.Name = "CompareForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сравнение";
             this.grbPersonOne.ResumeLayout(false);
             this.grbPersonOne.PerformLayout();
@@ -1287,5 +1301,7 @@
         private System.Windows.Forms.Label lblFathername1;
         private System.Windows.Forms.TextBox txbFathername2;
         private System.Windows.Forms.Label lblFathername2;
+        private System.Windows.Forms.Button saveForPrint;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

@@ -159,6 +159,8 @@
             this.compareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chart5yearsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.SaveForPrint_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.gbxDOB.SuspendLayout();
             this.pnlDOBMatrixBackground.SuspendLayout();
             this.pnlDOBMatrix_9.SuspendLayout();
@@ -1464,6 +1466,7 @@
             this.openToolStripMenuItem,
             this.clearToolStripMenuItem,
             this.saveToolStripMenuItem,
+            this.SaveForPrint_ToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.generalToolStripMenuItem.Name = "generalToolStripMenuItem";
             this.generalToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
@@ -1472,28 +1475,28 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.openToolStripMenuItem.Text = "Открыть";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.clearToolStripMenuItem.Text = "Очистить";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.saveToolStripMenuItem.Text = "Сохранить";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.exitToolStripMenuItem.Text = "Выйти";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -1525,6 +1528,13 @@
             this.openFileDialog1.DefaultExt = "xml";
             this.openFileDialog1.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
             this.openFileDialog1.Title = "Browse personal data";
+            // 
+            // SaveForPrint_ToolStripMenuItem
+            // 
+            this.SaveForPrint_ToolStripMenuItem.Name = "SaveForPrint_ToolStripMenuItem";
+            this.SaveForPrint_ToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.SaveForPrint_ToolStripMenuItem.Text = "Сохранить для печати";
+            this.SaveForPrint_ToolStripMenuItem.Click += new System.EventHandler(this.SaveForPrint_ToolStripMenuItem_Click);
             // 
             // frmNumerology
             // 
@@ -1741,6 +1751,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox txbFathersName;
         private System.Windows.Forms.Label lblFathersName;
+        private System.Windows.Forms.ToolStripMenuItem SaveForPrint_ToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

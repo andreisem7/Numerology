@@ -27,7 +27,7 @@ namespace Numerology.UI
         private LifeCycles cycles1 = null;
         private LifeCycles cycles2 = null;
 
-        private int ellipsePenWidth = 2;        
+        private int ellipsePenWidth = 2;
         private int topBottomLinePenWidth = 1;
         private System.Drawing.Color topBottomLineColor = System.Drawing.Color.Black;
         private string evaryDayGraphErrorMsg = "График бытовой и духовной совместимости невозможно построить.";
@@ -66,7 +66,7 @@ namespace Numerology.UI
                     var period = GetCmbSelectedValue(cmbRelationPeriod);
                     if (!ShowEveryDayAndSpiritualityCompatibility(comparison1, comparison2, yearsRelationsStart, period))
                     {
-                        MessageBox.Show(evaryDayGraphErrorMsg);                        
+                        MessageBox.Show(evaryDayGraphErrorMsg);
                     }
                 }
             }
@@ -188,7 +188,7 @@ namespace Numerology.UI
             return years;
         }
         private List<int> GetRelationPeriod()
-        {            
+        {
             var years = new List<int>();
             for (int i = 20; i <= 60; i += 20)
             {
@@ -302,8 +302,8 @@ namespace Numerology.UI
                     if (comparison2 != null) ShowCycles2(comparison2, year);
 
                     if (comparison1 != null && comparison2 != null)
-                    {                        
-                        ShowWorkingPersonalCompatibility(comparison1, comparison2, year);                        
+                    {
+                        ShowWorkingPersonalCompatibility(comparison1, comparison2, year);
                     }
                 }
             }
@@ -498,15 +498,15 @@ namespace Numerology.UI
 
             var everyDayRounded = Round(everyDay);//1
             var spiritualityRounded = Round(spirituality);//2
-            
+
             int firstRowPanelTop = 0;
-            int panelRowHeight = 50;            
-            int regularLabelHeight = 15;            
-            int spaceBetweenLabels = 2;            
+            int panelRowHeight = 50;
+            int regularLabelHeight = 15;
+            int spaceBetweenLabels = 2;
             int leftElementLeft = 0;
 
-            int secondRowPanelTop = firstRowPanelTop + panelRowHeight + (2 * regularLabelHeight) + (3 * spaceBetweenLabels);            
-            var biggestYear = yearsRelationsStart + period;            
+            int secondRowPanelTop = firstRowPanelTop + panelRowHeight + (2 * regularLabelHeight) + (3 * spaceBetweenLabels);
+            var biggestYear = yearsRelationsStart + period;
             var baseWidth = pnlCompatibilityBase.Width;
             int pxForOneYear = baseWidth / period;
 
@@ -539,7 +539,7 @@ namespace Numerology.UI
                     element.StartYear = firstRowElements[i - 1].EndYear;
                     element.EndYear = element.StartYear + everyDayRounded;
                     element.Width = ((int)(everyDayRounded * pxForOneYear)) - 1;
-                    element.Left = firstRowElements[i - 1].Left + firstRowElements[i - 1].Width + 1;                    
+                    element.Left = firstRowElements[i - 1].Left + firstRowElements[i - 1].Width + 1;
                     element.Right = ((int)(everyDayRounded * pxForOneYear)) - 1;
                 }
 
@@ -573,9 +573,9 @@ namespace Numerology.UI
                 else
                 {
                     element.StartYear = secondRowElements[i - 1].EndYear;
-                    element.EndYear = element.StartYear + spiritualityRounded;                                        
+                    element.EndYear = element.StartYear + spiritualityRounded;
                     element.Width = ((int)(spiritualityRounded * pxForOneYear)) - 1;
-                    element.Left = secondRowElements[i - 1].Left + secondRowElements[i - 1].Width + 1;                    
+                    element.Left = secondRowElements[i - 1].Left + secondRowElements[i - 1].Width + 1;
                     element.Right = ((int)(spiritualityRounded * pxForOneYear)) - 1;
                 }
 
@@ -587,7 +587,7 @@ namespace Numerology.UI
                 }
                 secondRowElements.Add(element);
             }
-            
+
             DrawCompatibilityObjects(firstRowElements, true);
             DrawCompatibilityObjects(secondRowElements, false);
 
@@ -601,7 +601,7 @@ namespace Numerology.UI
         }
 
         private void DrawCompatibilityLabels(List<CompatibilityHelper> topElements, List<CompatibilityHelper> bottomElements)
-        {            
+        {
             foreach (var topElement in topElements.Where(x => !x.IsFirstElement))
             {
                 foreach (var bottomElement in bottomElements.Where(x => !x.IsFirstElement))
@@ -613,14 +613,14 @@ namespace Numerology.UI
                     }
                 }
             }
-            
+
             int regularLabelHeight = 15;
             int regularLabelWidth = 45;
             int spaceBetweenLabels = 2;
             int extraSpaceBetweenLabels = 5;
             int extraLabelHeight = 26;
             int extraLabelWidth = 60;
-            
+
             Color regularColor = Color.Black;
             Font regularFont = new Font("Microsoft Sans Serif", (float)8.25);
 
@@ -629,12 +629,12 @@ namespace Numerology.UI
 
             // Top elements
             var te = topElements.First(x => x.IsFirstElement);
-            
+
             var tlb = CreateLabel(te, regularLabelHeight, regularLabelWidth, te.Left, te.Bottom + spaceBetweenLabels, GetFormattedDecimal(te.StartYear), regularFont, regularColor);
             pnlCompatibilityBase.Controls.Add(tlb);
 
             foreach (var topElement in topElements.Where(x => !x.IsSharedYear && !x.IsLastElement))
-            {                
+            {
                 tlb = CreateLabel(topElement, regularLabelHeight, regularLabelWidth, topElement.Left + topElement.Width - (regularLabelWidth / 2), topElement.Bottom + spaceBetweenLabels, GetFormattedDecimal(topElement.EndYear), regularFont, regularColor);
                 pnlCompatibilityBase.Controls.Add(tlb);
             }
@@ -645,7 +645,7 @@ namespace Numerology.UI
             pnlCompatibilityBase.Controls.Add(blb);
 
             foreach (var bottomElement in bottomElements.Where(x => !x.IsSharedYear && !x.IsLastElement))
-            {                
+            {
                 blb = CreateLabel(bottomElement, regularLabelHeight, regularLabelWidth, bottomElement.Left + bottomElement.Width - (regularLabelWidth / 2), be.Top - spaceBetweenLabels - regularLabelHeight, GetFormattedDecimal(bottomElement.EndYear), regularFont, regularColor);
                 pnlCompatibilityBase.Controls.Add(blb);
             }
@@ -743,9 +743,9 @@ namespace Numerology.UI
         private void DrawTopLineForBottom(PaintEventArgs e, CompatibilityHelper element, System.Drawing.Color color, int penWidth)
         {
             Pen pen = new Pen(color, penWidth);
-            var width = element.Width;            
+            var width = element.Width;
             e.Graphics.DrawLine(pen, new Point(0, 0), new Point(width, 0));
-        }        
+        }
         private decimal Round(decimal input)
         {
             decimal output = 0.0M;
@@ -793,6 +793,81 @@ namespace Numerology.UI
         {
             lblPeakNumberValue2.Text = (peak2 == -1) ? " " : "+" + peak2.ToString();
             lblProblemNumberValue2.Text = (bottom2 == -1) ? " " : ((bottom2 == 0) ? " " : "-") + bottom2.ToString();
+        }
+
+        private void saveForPrint_Click(object sender, EventArgs e)
+        {
+            var defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var defaultFilename = GetNameForScreenshot(comparison1) + "_" + GetNameForScreenshot(comparison2) + "_Year_" + GetCmbSelectedValue(cmbYears);
+
+            saveFileDialog1.InitialDirectory = defaultPath;
+            saveFileDialog1.FileName = defaultFilename;
+            saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
+            saveFileDialog1.Title = "Сохранить изображение для печати";
+            saveFileDialog1.OverwritePrompt = true;
+            saveFileDialog1.CheckPathExists = true;
+            saveFileDialog1.AddExtension = true;
+            saveFileDialog1.SupportMultiDottedExtensions = true;
+            saveFileDialog1.DefaultExt = ".jpg";
+            var defaultImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if (string.IsNullOrEmpty(saveFileDialog1.FileName))
+                {
+                    MessageBox.Show("Имя файла не указано.");
+                    return;
+                }
+
+                switch (saveFileDialog1.FilterIndex)
+                {
+                    case 1:
+                        defaultImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
+                        break;
+
+                    case 2:
+                        defaultImageFormat = System.Drawing.Imaging.ImageFormat.Bmp;
+                        break;
+
+                    case 3:
+                        defaultImageFormat = System.Drawing.Imaging.ImageFormat.Gif;
+                        break;
+                }
+
+                Rectangle bounds = this.Bounds;
+                using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+                {
+                    using (Graphics g = Graphics.FromImage(bitmap))
+                    {
+                        System.Threading.Thread.Sleep(1500);
+                        g.CopyFromScreen(new Point(bounds.Left, bounds.Top), Point.Empty, bounds.Size);
+                    }
+                    defaultFilename = Path.Combine(saveFileDialog1.InitialDirectory, saveFileDialog1.FileName);
+                    bitmap.Save(defaultFilename, defaultImageFormat);
+
+                    MessageBox.Show("Успешно сохранено.", "Подтверждение", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private string GetNameForScreenshot(Comparison comparison)
+        {
+            var name = "EmptyName";
+            var dateString = "";
+            if (comparison != null)
+            {
+                var firstname = comparison.Name;
+                var lastname = comparison.Surname;
+                name = firstname + "_" + lastname;
+
+                var day = DateOfBirthObject.GetString(comparison.DOB.Day, 2);
+                var month = DateOfBirthObject.GetString(comparison.DOB.Month, 2);
+                var year = DateOfBirthObject.GetString(comparison.DOB.Year, 4);
+
+                dateString = day + "_" + month + "_" + year;
+            }
+
+            return name + "_" + dateString;
         }        
     }
     public class CompatibilityHelper
