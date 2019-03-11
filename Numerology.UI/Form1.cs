@@ -327,7 +327,7 @@ namespace Numerology.UI
         {
             var defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             var defaultFilename = GetNameForScreenshot();
-            
+
             saveFileDialog1.InitialDirectory = defaultPath;
             saveFileDialog1.FileName = defaultFilename;
             saveFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
@@ -342,22 +342,22 @@ namespace Numerology.UI
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if (string.IsNullOrEmpty(saveFileDialog1.FileName))
-                {                    
-                    MessageBox.Show("Имя файла не указано.");                    
+                {
+                    MessageBox.Show("Имя файла не указано.");
                     return;
                 }
-                
+
                 switch (saveFileDialog1.FilterIndex)
                 {
                     case 1:
                         defaultImageFormat = System.Drawing.Imaging.ImageFormat.Jpeg;
                         break;
 
-                    case 2:                        
+                    case 2:
                         defaultImageFormat = System.Drawing.Imaging.ImageFormat.Bmp;
                         break;
 
-                    case 3:                        
+                    case 3:
                         defaultImageFormat = System.Drawing.Imaging.ImageFormat.Gif;
                         break;
                 }
@@ -379,7 +379,7 @@ namespace Numerology.UI
         }
 
         #endregion /Menu events 
-        
+
         private string GetNameForScreenshot()
         {
             var name = "EmptyName";
@@ -397,7 +397,7 @@ namespace Numerology.UI
                     var day = numerologyObject.DOBObject.GetDayString;
                     var month = numerologyObject.DOBObject.GetMonthString;
                     var year = numerologyObject.DOBObject.GetYearString;
-                    
+
                     dateString = day + "_" + month + "_" + year;
                 }
             }
@@ -412,6 +412,7 @@ namespace Numerology.UI
             var targetOne = matrix.Where(x => x.CountOfNumber == 1).OrderBy(z => z.Number).ToList();
             targetZero.AddRange(targetOne);
 
+            ClearDiffer();
             if (targetZero.Count == 0) return;
 
             var parentWidth = pnlMatrixDiffer.Width;
@@ -432,8 +433,6 @@ namespace Numerology.UI
             var width = 60;
             var startX = (pnlMatrixDiffer.Width - width) / 2;
             var startY = (pnlMatrixDiffer.Height - ((height * targetZero.Count) + (between * (targetZero.Count - 1)))) / 2;
-
-            ClearDiffer();
 
             for (int i = 0; i < targetZero.Count; i++)
             {
@@ -868,6 +867,6 @@ namespace Numerology.UI
         private NumerologyObject InitNumerologyObject()
         {
             return Manager.InitNumerologyObject();
-        }        
+        }
     }
 }
