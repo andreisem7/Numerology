@@ -1066,7 +1066,7 @@
             this.grbCompatibility.Controls.Add(this.lblEveryDay);
             this.grbCompatibility.Location = new System.Drawing.Point(13, 493);
             this.grbCompatibility.Name = "grbCompatibility";
-            this.grbCompatibility.Size = new System.Drawing.Size(1225, 211);
+            this.grbCompatibility.Size = new System.Drawing.Size(1117, 211);
             this.grbCompatibility.TabIndex = 32;
             this.grbCompatibility.TabStop = false;
             this.grbCompatibility.Text = "Совместимость";
@@ -1111,7 +1111,7 @@
             // 
             this.pnlCompatibilityBase.Location = new System.Drawing.Point(9, 51);
             this.pnlCompatibilityBase.Name = "pnlCompatibilityBase";
-            this.pnlCompatibilityBase.Size = new System.Drawing.Size(1200, 136);
+            this.pnlCompatibilityBase.Size = new System.Drawing.Size(1091, 136);
             this.pnlCompatibilityBase.TabIndex = 2;
             // 
             // lblSpiritual
@@ -1134,7 +1134,7 @@
             // 
             // saveForPrint
             // 
-            this.saveForPrint.Location = new System.Drawing.Point(1068, 26);
+            this.saveForPrint.Location = new System.Drawing.Point(489, 59);
             this.saveForPrint.Name = "saveForPrint";
             this.saveForPrint.Size = new System.Drawing.Size(170, 23);
             this.saveForPrint.TabIndex = 33;
@@ -1146,7 +1146,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1250, 711);
+            this.ClientSize = new System.Drawing.Size(1145, 711);
             this.Controls.Add(this.saveForPrint);
             this.Controls.Add(this.grbCompatibility);
             this.Controls.Add(this.lblpersonalCoeffAfter);
@@ -1183,9 +1183,9 @@
             this.Controls.Add(this.grbPersonOne);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1266, 750);
+            this.MaximumSize = new System.Drawing.Size(1161, 750);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1266, 750);
+            this.MinimumSize = new System.Drawing.Size(1161, 750);
             this.Name = "CompareForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сравнение";

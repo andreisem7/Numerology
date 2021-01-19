@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2011
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numerology.UI", "Numerology.UI\Numerology.UI.csproj", "{AA9630D4-DCED-4A30-A694-7F41AC752D40}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numerology.BL", "Numerology.BL\Numerology.BL.csproj", "{84025C67-6253-41B5-AF6E-0520C896A0BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numerology.Helper.UI", "Numerology.Helper.UI\Numerology.Helper.UI.csproj", "{3BC6AB3E-757F-4EDC-831E-1482E8C6422B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Numerology.Hash", "Numerology.Hash\Numerology.Hash.csproj", "{241D306A-44A1-4AEE-A248-DC285BF14EFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{84025C67-6253-41B5-AF6E-0520C896A0BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84025C67-6253-41B5-AF6E-0520C896A0BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84025C67-6253-41B5-AF6E-0520C896A0BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BC6AB3E-757F-4EDC-831E-1482E8C6422B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BC6AB3E-757F-4EDC-831E-1482E8C6422B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BC6AB3E-757F-4EDC-831E-1482E8C6422B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BC6AB3E-757F-4EDC-831E-1482E8C6422B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241D306A-44A1-4AEE-A248-DC285BF14EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241D306A-44A1-4AEE-A248-DC285BF14EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241D306A-44A1-4AEE-A248-DC285BF14EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241D306A-44A1-4AEE-A248-DC285BF14EFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

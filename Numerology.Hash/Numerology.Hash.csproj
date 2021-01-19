@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84025C67-6253-41B5-AF6E-0520C896A0BD}</ProjectGuid>
+    <ProjectGuid>{241D306A-44A1-4AEE-A248-DC285BF14EFF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Numerology.BL</RootNamespace>
-    <AssemblyName>Numerology.BL</AssemblyName>
+    <RootNamespace>Numerology.Hash</RootNamespace>
+    <AssemblyName>Numerology.Hash</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,21 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlphabetCrapHelper.cs" />
-    <Compile Include="Comparison.cs" />
-    <Compile Include="DateOfBirthObject.cs" />
-    <Compile Include="LifeCycleHelper.cs" />
-    <Compile Include="LifeCycleTagObject.cs" />
-    <Compile Include="LifeCycleText.cs" />
-    <Compile Include="LifeCycleViewModel.cs" />
-    <Compile Include="Manager.cs" />
-    <Compile Include="Matrix.cs" />
-    <Compile Include="NameSurnameManager.cs" />
-    <Compile Include="NameSurnameObject.cs" />
-    <Compile Include="NumerogicalLetter.cs" />
-    <Compile Include="NumerologyObject.cs" />
-    <Compile Include="PeakObject.cs" />
-    <Compile Include="PersonalWorkingRelationshipManager.cs" />
+    <Compile Include="HashHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

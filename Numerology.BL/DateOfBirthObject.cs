@@ -11,6 +11,7 @@ namespace Numerology.BL
         private int masterNumberDOB = 0;
         private string lifeWayNumberFullCalculation = String.Empty;
         private int lifeWayNumber = 0;
+        private int lifeWayNumberExtended = 0;
         private int dobSum = 0;
         private int dobSumSubstructed = 0;
         private int dobSumSubstructedSimplified = 0;
@@ -89,6 +90,14 @@ namespace Numerology.BL
         {
             get { return lifeWayNumber; }
         }
+        public string GetLifeWayNumberExtendedString
+        {
+            get { return lifeWayNumberExtended.ToString(); }
+        }
+        public int GetLifeWayNumberExtended
+        {
+            get { return lifeWayNumberExtended; }
+        }
         public int GetEveryDayStabilityNumber
         {
             get { return everyDayStabilityNumber; }
@@ -107,13 +116,14 @@ namespace Numerology.BL
         }
         public Matrix DOBMatrix { get; set; }
         public List<PeakObject> Peaks { get; set; }
-        public void SetDateOfBirth(int day, int month, int year)
+        public void SetDate(int day, int month, int year)
         {
             try
             {
                 DOB = new DateTime(year, month, day);
                 dobSum = GetDOBSum(GetDayString, GetMonthString, GetYearString);
                 lifeWayNumber = GetLifeWayNumberMethod(GetDayString, GetMonthString, GetYearString, out isMasterNumberDOB, out masterNumberDOB, out lifeWayNumberFullCalculation);
+                lifeWayNumberExtended = GetLifeWayNumberExtendedMethod(GetDayString, GetMonthString, GetYearString);
                 dobSumSubstructed = GetDOBSumSubstructed(GetDayString, GetMonthString, GetYearString);
                 dobSumSubstructedSimplified = int.Parse(NarrowToOneNumber(dobSumSubstructed.ToString(), out _, out _, out _));
 
@@ -229,6 +239,18 @@ namespace Numerology.BL
             masterNumber = 0;
             lifeWayNumberFullCalculation = String.Empty;
             return int.Parse(NarrowToOneNumber(day + month + year, out isMaster, out masterNumber, out lifeWayNumberFullCalculation));
+        }
+        private int GetLifeWayNumberExtendedMethod(string day, string month, string year)
+        {
+            var dayInt = int.Parse(day);
+            var monthInt = int.Parse(month);
+
+            var year1 = (year.Length == 4) ? int.Parse(year.Substring(0, 1)) : 0;
+            var year2 = (year.Length == 4) ? int.Parse(year.Substring(1, 1)) : 0;
+            var year3 = (year.Length == 4) ? int.Parse(year.Substring(2, 1)) : 0;
+            var year4 = (year.Length == 4) ? int.Parse(year.Substring(3, 1)) : 0;
+
+            return dayInt + monthInt + year1 + year2 + year3 + year4;
         }
         private string NarrowToOneNumber(string input, out bool isMaster, out int masterNumber, out string lifeWayNumberFullCalculation)
         {

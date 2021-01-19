@@ -18,12 +18,15 @@ namespace Numerology.UI
         private NumerologyObject numerologyObject = null;
         private Comparison comparison = null;
         private const int CUSTOMER_ESTIMATED_LIFE_EXPECTATION = 100;
+        private readonly bool local = false;
 
-        public ChartForm()
+        public ChartForm(bool local)
         {
+            this.local = local;
             InitializeComponent();
             numerologyObject = InitNumerologyObject();
             openFileDialog1.InitialDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CUSTOMER_FOLDER_NAME);
+            if (!local) button1.Visible = false;
         }
         private NumerologyObject InitNumerologyObject()
         {

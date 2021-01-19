@@ -1,4 +1,5 @@
 ﻿using Numerology.BL;
+using Numerology.Hash;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,7 @@ namespace Numerology.UI
 
         private bool isUserInitiatedExit = false;
         private readonly bool local = false;
+        private bool isAuthProblem = false;
         public frmNumerology()
         {
 #if (YANAONLY)
@@ -40,6 +42,33 @@ namespace Numerology.UI
             pnlPeak_2.Paint += PnlPeak_2_Paint;
             pnlPeak_3.Paint += PnlPeak_3_Paint;
             pnlPeak_4.Paint += PnlPeak_4_Paint;
+
+            if (!local) SaveForPrint_ToolStripMenuItem.Visible = false;
+        }
+
+        private void ShutDownForm()
+        {
+            isAuthProblem = true;
+            this.Close();
+        }
+        private void AppShortcutToDesktop(string linkName)
+        {
+            try
+            {
+                string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+
+                using (StreamWriter writer = new StreamWriter(deskDir + "\\" + linkName + ".url"))
+                {
+                    string app = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                    writer.WriteLine("[InternetShortcut]");
+                    writer.WriteLine("URL=file:///" + app);
+                    writer.WriteLine("IconIndex=0");
+                    string icon = app.Replace('\\', '/');
+                    writer.WriteLine("IconFile=" + icon);
+                    writer.Flush();
+                }
+            }
+            catch { /* Just do nothing with it */ }
         }
 
         #region Form events 
@@ -66,19 +95,127 @@ namespace Numerology.UI
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            InitUI();
-            numerologyObject = InitNumerologyObject();
 
-            var customersFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CUSTOMER_FOLDER_NAME);
-            if (!Directory.Exists(customersFolderPath))
+            if (!local)
             {
-                Directory.CreateDirectory(customersFolderPath);
+                try
+                {
+                    var files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.ins");
+                    var authDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Auth");
+                    var hash = new HashHandler();
+                    if (files == null || files.Length == 0)
+                    {
+                        // Check PC name in other directory
+                        var di = new DirectoryInfo(authDir);
+                        if (!di.Exists)
+                        {
+                            MessageBox.Show("No license file was provided.");
+                            ShutDownForm();
+                        }
+                        else
+                        {
+                            var dirFiles = Directory.GetFiles(authDir, "*.ins");
+                            if (dirFiles == null)
+                            {
+                                MessageBox.Show("No license file was provided.");
+                                ShutDownForm();
+                            }
+                            else if (dirFiles.Length == 1)
+                            {
+                                var text = System.IO.File.ReadAllText(dirFiles[0], Encoding.ASCII);
+                                var licensedPC = hash.Decode(text);
+                                if (string.IsNullOrEmpty(licensedPC))
+                                {
+                                    MessageBox.Show("Empty license file.");
+                                    ShutDownForm();
+                                }
+                                else if (!Environment.MachineName.Equals(licensedPC))
+                                {
+                                    MessageBox.Show("Application was licensed for other PC...WTF, bro?");
+                                    ShutDownForm();
+                                }
+                            }
+                            else if (dirFiles.Length > 1)
+                            {
+                                MessageBox.Show("More than 1 license file exists...WTF?");
+                                ShutDownForm();
+                            }
+                        }
+                    }
+                    else if (files.Length == 1)
+                    {
+                        var text = System.IO.File.ReadAllText(files[0], Encoding.ASCII);
+
+                        var result = hash.ConvertFromHash(text);
+                        var now = DateTime.Now;
+                        if (result == null)
+                        {
+                            MessageBox.Show("Broken activation file.");
+                            ShutDownForm();
+                        }
+                        else if (now < result.Start || now > result.End)
+                        {
+                            MessageBox.Show("You can activate app in this interval of dates only: " + result.Start.ToString("dd.MM.yyyy HH.mm.ss") + " - " + result.End.ToString("dd.MM.yyyy HH.mm.ss"));
+                            ShutDownForm();
+                        }
+                        else
+                        {
+                            // App may be activated                             
+                            var di = new DirectoryInfo(authDir);
+                            if (!di.Exists) di.Create();
+                            else
+                            {
+                                var dirFiles = di.GetFiles();
+                                for (int i = 0; i < dirFiles.Length; i++)
+                                {
+                                    var f = new FileInfo(dirFiles[i].FullName);
+                                    f.Delete();
+                                }
+                            }
+
+                            var fi = new FileInfo(files[0]);
+                            var stringToSave = hash.Encode(Environment.MachineName);
+                            File.WriteAllText(Path.Combine(authDir, fi.Name), stringToSave, Encoding.ASCII);
+                            File.Delete(files[0]);
+                            AppShortcutToDesktop("Numerology");
+                            MessageBox.Show("Successfully activated for : " + Environment.MachineName);
+                        }
+                    }
+                    else if (files.Length > 1)
+                    {
+                        MessageBox.Show("There are more than 1 .ins file in start directory.");
+                        ShutDownForm();
+                    }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Error, while authentication check: " + exc.Message);
+                    ShutDownForm();
+                }
+                this.Text = "Нумерология (licensed for: " + Environment.MachineName + ").";
+            }
+            else
+            {
+                // For Yana only
+                this.Text = "Нумерология (private version).";
+            }
+
+            if (!isAuthProblem)
+            {
+                InitUI();
+                numerologyObject = InitNumerologyObject();
+
+                var customersFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CUSTOMER_FOLDER_NAME);
+                if (!Directory.Exists(customersFolderPath))
+                {
+                    Directory.CreateDirectory(customersFolderPath);
+                }
             }
         }
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            if (isUserInitiatedExit || MessageBox.Show("Хотите выйти из программы?", "Подтверждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (isAuthProblem || isUserInitiatedExit || MessageBox.Show("Хотите выйти из программы?", "Подтверждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 base.OnClosing(e);
             }
@@ -104,7 +241,7 @@ namespace Numerology.UI
                         MessageBox.Show("Несуществующая комбинация дня,месяца и года.");
                         return;
                     }
-                    numerologyObject.DOBObject.SetDateOfBirth(day, month, year);
+                    numerologyObject.DOBObject.SetDate(day, month, year);
                     //numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), numerologyObject.DOBObject.GetLifeWayNumber);
                     numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), (Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()) == Language.RUS ? txbFathersName.Text.Trim() : null, numerologyObject.DOBObject.GetLifeWayNumber);
 
@@ -131,7 +268,7 @@ namespace Numerology.UI
                         MessageBox.Show("Несуществующая комбинация дня,месяца и года.");
                         return;
                     }
-                    numerologyObject.DOBObject.SetDateOfBirth(day, month, year);
+                    numerologyObject.DOBObject.SetDate(day, month, year);
                     //numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), numerologyObject.DOBObject.GetLifeWayNumber);
                     numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), (Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()) == Language.RUS ? txbFathersName.Text.Trim() : null, numerologyObject.DOBObject.GetLifeWayNumber);
 
@@ -158,7 +295,7 @@ namespace Numerology.UI
                         MessageBox.Show("Несуществующая комбинация дня,месяца и года.");
                         return;
                     }
-                    numerologyObject.DOBObject.SetDateOfBirth(day, month, year);
+                    numerologyObject.DOBObject.SetDate(day, month, year);
                     //numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), numerologyObject.DOBObject.GetLifeWayNumber);
                     numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), (Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()) == Language.RUS ? txbFathersName.Text.Trim() : null, numerologyObject.DOBObject.GetLifeWayNumber);
 
@@ -193,7 +330,7 @@ namespace Numerology.UI
             var year = GetCmbSelectedValue(cmbYear);
             if (day > 0 && month > 0 && year > 0)
             {
-                numerologyObject.DOBObject.SetDateOfBirth(day, month, year);
+                numerologyObject.DOBObject.SetDate(day, month, year);
                 //numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), numerologyObject.DOBObject.GetLifeWayNumber);
                 numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), (Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()) == Language.RUS ? txbFathersName.Text.Trim() : null, numerologyObject.DOBObject.GetLifeWayNumber);
                 SetNameValuesToUI();
@@ -216,7 +353,7 @@ namespace Numerology.UI
             var year = GetCmbSelectedValue(cmbYear);
             if (day > 0 && month > 0 && year > 0)
             {
-                numerologyObject.DOBObject.SetDateOfBirth(day, month, year);
+                numerologyObject.DOBObject.SetDate(day, month, year);
                 numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), selectedLang == Language.RUS ? txbFathersName.Text.Trim() : null, numerologyObject.DOBObject.GetLifeWayNumber);
                 SetNameValuesToUI();
                 SetMatrixIntersection(Matrix.TwoMatrixAnalisys(numerologyObject.DOBObject.DOBMatrix, numerologyObject.NameObject.NameMatrix));
@@ -257,7 +394,7 @@ namespace Numerology.UI
 
         private void compareToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CompareForm compare = new CompareForm();
+            CompareForm compare = new CompareForm(this.local);
             compare.WindowState = FormWindowState.Normal;
             compare.StartPosition = FormStartPosition.CenterParent;
 
@@ -266,11 +403,20 @@ namespace Numerology.UI
 
         private void chart5yearsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChartForm chartFiveYears = new ChartForm();
+            ChartForm chartFiveYears = new ChartForm(this.local);
             chartFiveYears.WindowState = FormWindowState.Normal;
             chartFiveYears.StartPosition = FormStartPosition.CenterParent;
 
             chartFiveYears.ShowDialog();
+        }
+
+        private void lifewayNumberToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PersonalYearForm personalYear = new PersonalYearForm(this.local);
+            personalYear.WindowState = FormWindowState.Normal;
+            personalYear.StartPosition = FormStartPosition.CenterParent;
+
+            personalYear.ShowDialog();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -311,7 +457,7 @@ namespace Numerology.UI
                         openSaved = false;
                         return;
                     }
-                    numerologyObject.DOBObject.SetDateOfBirth(day, month, year);
+                    numerologyObject.DOBObject.SetDate(day, month, year);
                     //numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), numerologyObject.DOBObject.GetLifeWayNumber);
                     numerologyObject.NameObject.SetName((Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()), txbName.Text.Trim(), txbSurname.Text.Trim(), (Language)Enum.Parse(typeof(Language), cmbLang.SelectedItem.ToString()) == Language.RUS ? txbFathersName.Text.Trim() : null, numerologyObject.DOBObject.GetLifeWayNumber);
 
@@ -376,6 +522,15 @@ namespace Numerology.UI
                     MessageBox.Show("Успешно сохранено.", "Подтверждение", MessageBoxButtons.OK);
                 }
             }
+        }
+
+        private void lifeCyclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LifeCycles lifeCycles = new LifeCycles();
+            lifeCycles.WindowState = FormWindowState.Normal;
+            lifeCycles.StartPosition = FormStartPosition.CenterParent;
+
+            lifeCycles.ShowDialog();
         }
 
         #endregion /Menu events 
@@ -464,7 +619,11 @@ namespace Numerology.UI
             lblMonthString.Text = numerologyObject.DOBObject.GetMonthString;
             lblYearString.Text = numerologyObject.DOBObject.GetYearString;
 
-            if (local) lblLifeWay.Text = numerologyObject.DOBObject.GetLifeWayNumberFullCalculationString;
+            if (local)
+            {
+                lblLifeWay.Text = numerologyObject.DOBObject.GetLifeWayNumberFullCalculationString;
+                lblLifeWayExt.Text = numerologyObject.DOBObject.GetLifeWayNumberExtendedString;
+            }
             else lblLifeWay.Text = numerologyObject.DOBObject.GetLifeWayNumberString;
 
             lblMasterNumberHeader.Visible = numerologyObject.DOBObject.IsMasterNumberDOB;
@@ -625,6 +784,7 @@ namespace Numerology.UI
             cmbYear.DataSource = GetYears();
 
             lblLifeWay.Text = "";
+            lblLifeWayExt.Text = "";
 
             ClearDOBTwoRows();
             ClearDOBMatrix();
@@ -841,12 +1001,20 @@ namespace Numerology.UI
         private List<Month> GetMonths()
         {
             var months = new List<Month>();
-            for (int i = 0; i < 12; i++)
-            {
-                var name = CultureInfo.CurrentUICulture.DateTimeFormat.MonthNames[i];
-                var month = new Month() { Id = (i + 1), Name = name };
-                months.Add(month);
-            }
+
+            months.Add(new Month() { Id = 1, Name = "Январь" });
+            months.Add(new Month() { Id = 2, Name = "Февраль" });
+            months.Add(new Month() { Id = 3, Name = "Март" });
+            months.Add(new Month() { Id = 4, Name = "Апрель" });
+            months.Add(new Month() { Id = 5, Name = "Май" });
+            months.Add(new Month() { Id = 6, Name = "Июнь" });
+            months.Add(new Month() { Id = 7, Name = "Июль" });
+            months.Add(new Month() { Id = 8, Name = "Август" });
+            months.Add(new Month() { Id = 9, Name = "Сентябрь" });
+            months.Add(new Month() { Id = 10, Name = "Октябрь" });
+            months.Add(new Month() { Id = 11, Name = "Ноябрь" });
+            months.Add(new Month() { Id = 12, Name = "Декабрь" });
+
             return months;
         }
 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbxDOB = new System.Windows.Forms.GroupBox();
+            this.lblLifeWayExt = new System.Windows.Forms.Label();
             this.lblStabilityValue1 = new System.Windows.Forms.Label();
             this.lblStability1 = new System.Windows.Forms.Label();
             this.lblFamilyValue1 = new System.Windows.Forms.Label();
@@ -154,12 +155,14 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveForPrint_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chart5yearsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lifewayNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lifeCyclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.SaveForPrint_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.gbxDOB.SuspendLayout();
             this.pnlDOBMatrixBackground.SuspendLayout();
@@ -196,6 +199,7 @@
             // 
             // gbxDOB
             // 
+            this.gbxDOB.Controls.Add(this.lblLifeWayExt);
             this.gbxDOB.Controls.Add(this.lblStabilityValue1);
             this.gbxDOB.Controls.Add(this.lblStability1);
             this.gbxDOB.Controls.Add(this.lblFamilyValue1);
@@ -228,6 +232,17 @@
             this.gbxDOB.TabIndex = 0;
             this.gbxDOB.TabStop = false;
             this.gbxDOB.Text = "Дата рождения";
+            // 
+            // lblLifeWayExt
+            // 
+            this.lblLifeWayExt.AutoSize = true;
+            this.lblLifeWayExt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLifeWayExt.ForeColor = System.Drawing.Color.Red;
+            this.lblLifeWayExt.Location = new System.Drawing.Point(350, 43);
+            this.lblLifeWayExt.Name = "lblLifeWayExt";
+            this.lblLifeWayExt.Size = new System.Drawing.Size(35, 17);
+            this.lblLifeWayExt.TabIndex = 26;
+            this.lblLifeWayExt.Text = "000";
             // 
             // lblStabilityValue1
             // 
@@ -581,7 +596,7 @@
             // lblLifeWayHeader
             // 
             this.lblLifeWayHeader.AutoSize = true;
-            this.lblLifeWayHeader.Location = new System.Drawing.Point(296, 22);
+            this.lblLifeWayHeader.Location = new System.Drawing.Point(276, 22);
             this.lblLifeWayHeader.Name = "lblLifeWayHeader";
             this.lblLifeWayHeader.Size = new System.Drawing.Size(75, 13);
             this.lblLifeWayHeader.TabIndex = 8;
@@ -591,7 +606,7 @@
             // 
             this.lblLifeWay.AutoSize = true;
             this.lblLifeWay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLifeWay.Location = new System.Drawing.Point(302, 43);
+            this.lblLifeWay.Location = new System.Drawing.Point(282, 43);
             this.lblLifeWay.Name = "lblLifeWay";
             this.lblLifeWay.Size = new System.Drawing.Size(71, 17);
             this.lblLifeWay.TabIndex = 7;
@@ -1475,28 +1490,35 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.openToolStripMenuItem.Text = "Открыть";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.clearToolStripMenuItem.Text = "Очистить";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.saveToolStripMenuItem.Text = "Сохранить";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // SaveForPrint_ToolStripMenuItem
+            // 
+            this.SaveForPrint_ToolStripMenuItem.Name = "SaveForPrint_ToolStripMenuItem";
+            this.SaveForPrint_ToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.SaveForPrint_ToolStripMenuItem.Text = "Сохранить для печати";
+            this.SaveForPrint_ToolStripMenuItem.Click += new System.EventHandler(this.SaveForPrint_ToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.exitToolStripMenuItem.Text = "Выйти";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -1504,7 +1526,9 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.compareToolStripMenuItem,
-            this.chart5yearsToolStripMenuItem});
+            this.chart5yearsToolStripMenuItem,
+            this.lifewayNumberToolStripMenuItem,
+            this.lifeCyclesToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.toolsToolStripMenuItem.Text = "Инструменты";
@@ -1523,18 +1547,25 @@
             this.chart5yearsToolStripMenuItem.Text = "График (5-ти летний)";
             this.chart5yearsToolStripMenuItem.Click += new System.EventHandler(this.chart5yearsToolStripMenuItem_Click);
             // 
+            // lifewayNumberToolStripMenuItem
+            // 
+            this.lifewayNumberToolStripMenuItem.Name = "lifewayNumberToolStripMenuItem";
+            this.lifewayNumberToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.lifewayNumberToolStripMenuItem.Text = "Личный год";
+            this.lifewayNumberToolStripMenuItem.Click += new System.EventHandler(this.lifewayNumberToolStripMenuItem_Click);
+            // 
+            // lifeCyclesToolStripMenuItem
+            // 
+            this.lifeCyclesToolStripMenuItem.Name = "lifeCyclesToolStripMenuItem";
+            this.lifeCyclesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.lifeCyclesToolStripMenuItem.Text = "Жизненные циклы";
+            this.lifeCyclesToolStripMenuItem.Click += new System.EventHandler(this.lifeCyclesToolStripMenuItem_Click);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.DefaultExt = "xml";
             this.openFileDialog1.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
             this.openFileDialog1.Title = "Browse personal data";
-            // 
-            // SaveForPrint_ToolStripMenuItem
-            // 
-            this.SaveForPrint_ToolStripMenuItem.Name = "SaveForPrint_ToolStripMenuItem";
-            this.SaveForPrint_ToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.SaveForPrint_ToolStripMenuItem.Text = "Сохранить для печати";
-            this.SaveForPrint_ToolStripMenuItem.Click += new System.EventHandler(this.SaveForPrint_ToolStripMenuItem_Click);
             // 
             // frmNumerology
             // 
@@ -1753,6 +1784,9 @@
         private System.Windows.Forms.Label lblFathersName;
         private System.Windows.Forms.ToolStripMenuItem SaveForPrint_ToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem lifewayNumberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lifeCyclesToolStripMenuItem;
+        private System.Windows.Forms.Label lblLifeWayExt;
     }
 }
 

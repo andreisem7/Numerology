@@ -32,8 +32,11 @@ namespace Numerology.UI
         private System.Drawing.Color topBottomLineColor = System.Drawing.Color.Black;
         private string evaryDayGraphErrorMsg = "График бытовой и духовной совместимости невозможно построить.";
 
-        public CompareForm()
+        private readonly bool local = false;
+
+        public CompareForm(bool local)
         {
+            this.local = local;
             InitializeComponent();
             InitYears();
             InitYearsRelationsStart();
@@ -42,6 +45,7 @@ namespace Numerology.UI
 
             openFileDialog1.InitialDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CUSTOMER_FOLDER_NAME);
             openFileDialog2.InitialDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CUSTOMER_FOLDER_NAME);
+            if (!local) saveForPrint.Visible = false;
         }
         private void btnSelectPersonOne_Click(object sender, EventArgs e)
         {

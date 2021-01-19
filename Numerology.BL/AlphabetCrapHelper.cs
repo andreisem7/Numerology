@@ -173,7 +173,7 @@ namespace Numerology.BL
             alphabet.Add(m);
             NumerogicalLetter n = new NumerogicalLetter() { Letter = "Н", IsConsonant = true, Index = 6 };
             alphabet.Add(n);
-            NumerogicalLetter o = new NumerogicalLetter() { Letter = "O", IsConsonant = false, Index = 7 };
+            NumerogicalLetter o = new NumerogicalLetter() { Letter = "О", IsConsonant = false, Index = 7 };
             alphabet.Add(o);
             NumerogicalLetter p = new NumerogicalLetter() { Letter = "П", IsConsonant = true, Index = 8 };
             alphabet.Add(p);
@@ -287,6 +287,82 @@ namespace Numerology.BL
             alphabet.Add(z);
             NumerogicalLetter zz = new NumerogicalLetter() { Letter = "Ž", IsConsonant = true, Index = 6 };
             alphabet.Add(zz);
+
+            return alphabet;
+        }
+
+        public static List<NumerogicalLetter> GetUkranianAlphabet()
+        {
+            var alphabet = new List<NumerogicalLetter>();
+            NumerogicalLetter a = new NumerogicalLetter() { Letter = "А", IsConsonant = false, Index = 1 };
+            alphabet.Add(a);
+            NumerogicalLetter be = new NumerogicalLetter() { Letter = "Б", IsConsonant = true, Index = 2 };
+            alphabet.Add(be);
+            NumerogicalLetter ve = new NumerogicalLetter() { Letter = "В", IsConsonant = true, Index = 3 };
+            alphabet.Add(ve);
+            NumerogicalLetter ge = new NumerogicalLetter() { Letter = "Г", IsConsonant = true, Index = 4 };
+            alphabet.Add(ge);
+            NumerogicalLetter gee = new NumerogicalLetter() { Letter = "Ґ", IsConsonant = true, Index = 5 };
+            alphabet.Add(gee);
+            NumerogicalLetter de = new NumerogicalLetter() { Letter = "Д", IsConsonant = true, Index = 6 };
+            alphabet.Add(de);
+            NumerogicalLetter e = new NumerogicalLetter() { Letter = "Е", IsConsonant = false, Index = 7 };
+            alphabet.Add(e);
+            NumerogicalLetter ee = new NumerogicalLetter() { Letter = "Є", IsConsonant = false, Index = 8 };
+            alphabet.Add(ee);
+            NumerogicalLetter zze = new NumerogicalLetter() { Letter = "Ж", IsConsonant = true, Index = 9 };
+            alphabet.Add(zze);
+
+            NumerogicalLetter ze = new NumerogicalLetter() { Letter = "З", IsConsonant = true, Index = 1 };
+            alphabet.Add(ze);
+            NumerogicalLetter i = new NumerogicalLetter() { Letter = "И", IsConsonant = false, Index = 2 };
+            alphabet.Add(i);
+            NumerogicalLetter i1 = new NumerogicalLetter() { Letter = "І", IsConsonant = false, Index = 3 };
+            alphabet.Add(i1);
+            NumerogicalLetter i2 = new NumerogicalLetter() { Letter = "Ї", IsConsonant = false, Index = 4 };
+            alphabet.Add(i2);
+            NumerogicalLetter ii = new NumerogicalLetter() { Letter = "Й", IsConsonant = false, Index = 5 };
+            alphabet.Add(ii);
+            NumerogicalLetter k = new NumerogicalLetter() { Letter = "К", IsConsonant = true, Index = 6 };
+            alphabet.Add(k);
+            NumerogicalLetter l = new NumerogicalLetter() { Letter = "Л", IsConsonant = true, Index = 7 };
+            alphabet.Add(l);
+            NumerogicalLetter m = new NumerogicalLetter() { Letter = "М", IsConsonant = true, Index = 8 };
+            alphabet.Add(m);
+            NumerogicalLetter n = new NumerogicalLetter() { Letter = "Н", IsConsonant = true, Index = 9 };
+            alphabet.Add(n);
+
+            NumerogicalLetter o = new NumerogicalLetter() { Letter = "O", IsConsonant = false, Index = 1 };
+            alphabet.Add(o);
+            NumerogicalLetter p = new NumerogicalLetter() { Letter = "П", IsConsonant = true, Index = 2 };
+            alphabet.Add(p);
+            NumerogicalLetter re = new NumerogicalLetter() { Letter = "Р", IsConsonant = true, Index = 3 };
+            alphabet.Add(re);
+            NumerogicalLetter se = new NumerogicalLetter() { Letter = "С", IsConsonant = true, Index = 4 };
+            alphabet.Add(se);
+            NumerogicalLetter t = new NumerogicalLetter() { Letter = "Т", IsConsonant = true, Index = 5 };
+            alphabet.Add(t);
+            NumerogicalLetter u = new NumerogicalLetter() { Letter = "У", IsConsonant = false, Index = 6 };
+            alphabet.Add(u);
+            NumerogicalLetter f = new NumerogicalLetter() { Letter = "Ф", IsConsonant = true, Index = 7 };
+            alphabet.Add(f);
+            NumerogicalLetter h = new NumerogicalLetter() { Letter = "Х", IsConsonant = true, Index = 8 };
+            alphabet.Add(h);
+            NumerogicalLetter ce = new NumerogicalLetter() { Letter = "Ц", IsConsonant = true, Index = 9 };
+            alphabet.Add(ce);
+
+            NumerogicalLetter ch = new NumerogicalLetter() { Letter = "Ч", IsConsonant = true, Index = 1 };
+            alphabet.Add(ch);
+            NumerogicalLetter sh = new NumerogicalLetter() { Letter = "Ш", IsConsonant = true, Index = 2 };
+            alphabet.Add(sh);
+            NumerogicalLetter sch = new NumerogicalLetter() { Letter = "Щ", IsConsonant = true, Index = 3 };
+            alphabet.Add(sch);
+            NumerogicalLetter mz = new NumerogicalLetter() { Letter = "Ь", IsConsonant = true, Index = 4 };
+            alphabet.Add(mz);
+            NumerogicalLetter uu = new NumerogicalLetter() { Letter = "Ю", IsConsonant = false, Index = 5 };
+            alphabet.Add(uu);
+            NumerogicalLetter ja = new NumerogicalLetter() { Letter = "Я", IsConsonant = false, Index = 6 };
+            alphabet.Add(ja);
 
             return alphabet;
         }

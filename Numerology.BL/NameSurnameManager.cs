@@ -159,7 +159,7 @@ namespace Numerology.BL
         public Matrix NameMatrix { get; set; }
 
         public void SetName(Language lang, string name, string surname, string fathersname, int lifeWayNumber)
-        {            
+        {
             language = lang;
             nameRaw = name;
             surnameRaw = surname;
@@ -189,6 +189,7 @@ namespace Numerology.BL
                 vowelsAndConsonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(Combine2Ranges(nameSurname.NameLetters, nameSurname.SurnameLetters), nameSurname.FathersnameLetters)), out isVowelsAndConsonantsOfNameAndSurnameMaster, out vowelsAndConsonantsOfNameAndSurnameMaster));
 
                 vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumber = int.Parse(NarrowToOneNumber(vowelsAndConsonantsOfNameAndSurname.ToString() + _lifeWayNumber.ToString(), out isVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster, out vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster));
+                InitMatrix(true);
             }
             else
             {
@@ -197,11 +198,10 @@ namespace Numerology.BL
                 vowelsAndConsonantsOfNameAndSurname = int.Parse(NarrowToOneNumber(GetLettersIndexiesString(Combine2Ranges(nameSurname.NameLetters, nameSurname.SurnameLetters)), out isVowelsAndConsonantsOfNameAndSurnameMaster, out vowelsAndConsonantsOfNameAndSurnameMaster));
 
                 vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumber = int.Parse(NarrowToOneNumber(vowelsAndConsonantsOfNameAndSurname.ToString() + _lifeWayNumber.ToString(), out isVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster, out vowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberMaster));
+                InitMatrix(false);
             }
-
-            InitMatrix();
         }
-        private void InitMatrix()
+        private void InitMatrix(bool isFather)
         {
             var input = GetVowelsOfNameString + //p.1
                 GetConsonantsOfNameString + //p.2
@@ -213,8 +213,9 @@ namespace Numerology.BL
                 GetConsonantsOfNameAndSurnameString + //p.8
                 GetVowelsAndConsonantsOfNameAndSurnameString + //p.9
                 GetLifeWayNumberString + //p.10
-                GetVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberString; //p.11
-            
+                GetVowelsAndConsonantsOfNameAndSurnameAndlifeWayNumberString + //p.11
+                (isFather ? GetVowelsOfFathernameString + GetConsonantsOfFathernameString + GetVowelsAndConsonantsOfFathernameString : "");
+
             for (int i = 0; i < Matrix.Capacity; i++)
             {
                 var count = CountNumber(input, (i + 1).ToString());
@@ -248,7 +249,7 @@ namespace Numerology.BL
         }
 
         private string NarrowToOneNumber(string input, out bool isMaster, out int masterNumber)
-        {            
+        {
             string result = string.IsNullOrEmpty(input) ? "0" : input;
             isMaster = false;
             masterNumber = 0;
@@ -311,6 +312,14 @@ namespace Numerology.BL
                         if (!numLetter.IsConsonant) numerogicalLetter.IsConsonant = true;
                     }
                 }
+                if (lang == Language.UKR && numerogicalLetter.Letter == "Й")
+                {
+                    if (splittedName.Length > i + 1)
+                    {
+                        var letter = splittedName[i + 1].ToString().ToUpperInvariant();
+                        if (letter.Equals("O")) numerogicalLetter.IsConsonant = true;
+                    }
+                }
                 result.NameLetters.Add(numerogicalLetter);
             }
             // Surname
@@ -328,6 +337,14 @@ namespace Numerology.BL
                         var letter = splittedSurname[1].ToString().ToUpperInvariant();
                         var numLetter = alphabet.First(let => let.Letter.Equals(letter));
                         if (!numLetter.IsConsonant) numerogicalLetter.IsConsonant = true;
+                    }
+                }
+                if (lang == Language.UKR && numerogicalLetter.Letter == "Й")
+                {
+                    if (splittedName.Length > i + 1)
+                    {
+                        var letter = splittedName[i + 1].ToString().ToUpperInvariant();
+                        if (letter.Equals("O")) numerogicalLetter.IsConsonant = true;
                     }
                 }
                 result.SurnameLetters.Add(numerogicalLetter);
@@ -356,6 +373,7 @@ namespace Numerology.BL
                 case Language.EST: { return AlphabetCrapHelper.GetEstonianAlphabet(); }
                 case Language.RUS: { return AlphabetCrapHelper.GetRussianAlphabet(); }
                 case Language.LAT: { return AlphabetCrapHelper.GetLatvianAlphabet(); }
+                case Language.UKR: { return AlphabetCrapHelper.GetUkranianAlphabet(); }
                 default: { return AlphabetCrapHelper.GetEnglishAlphabet(); }
             }
         }
@@ -365,6 +383,7 @@ namespace Numerology.BL
         ENG = 1,
         RUS = 2,
         EST = 3,
-        LAT = 4
+        LAT = 4,
+        UKR = 5
     }
 }
